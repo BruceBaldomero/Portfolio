@@ -1,6 +1,65 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic");
 
+:root {
+	/* Dark Theme (Default) */
+	--background-color: #242424;
+	--text-color: #ffffff;
+	--heading-color: #ffffff;
+	--link-color: #ffb300;
+	--border-color: #000000;
+	--code-bg-color: #ffffff;
+}
+
+body.light-mode {
+	/* Light Theme Overrides */
+	--background-color: #f4f4f4;
+	--text-color: #555;
+	--heading-color: #333;
+	--link-color: #0074f0;
+	--border-color: #000000;
+	--code-bg-color: #000000;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: var(--link-color);
+	color: white;
+	border: none;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	font-size: 1.5em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+	transition: background-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+	filter: brightness(1.1);
+}
+
+#theme-toggle .fa-sun,
+#theme-toggle .fa-moon {
+	display: none;
+	/* Hidden by default, JavaScript will toggle */
+}
+
+body.dark-mode #theme-toggle .fa-sun {
+	display: inline-block;
+}
+
+body.light-mode #theme-toggle .fa-moon {
+	display: inline-block;
+}
+
 html,
 body,
 div,
@@ -167,7 +226,9 @@ html {
 }
 
 body {
-	background: #fff;
+	background: var(--background-color);
+	color: var(var(--text-color));
+	transition: background-color 1s ease, color 1s ease;
 }
 
 body.is-preload *,
@@ -187,7 +248,7 @@ body,
 input,
 select,
 textarea {
-	color: #a2a2a2;
+	color: var(--text-color);
 	font-family: "Source Sans Pro", Helvetica, sans-serif;
 	font-size: 16pt;
 	font-weight: 400;
@@ -200,19 +261,20 @@ a {
 	-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 	transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 	border-bottom: dotted 1px;
-	color: #49bf9d;
+	color: var(--link-color);
+	transition: color 1s ease;
 	text-decoration: none;
 }
 
 a:hover {
 	border-bottom-color: transparent;
-	color: #49bf9d !important;
+	color: var(--link-color) !important;
 	text-decoration: none;
 }
 
 strong,
 b {
-	color: #787878;
+	color: var(--heading-color);
 	font-weight: 400;
 }
 
@@ -231,7 +293,8 @@ h3,
 h4,
 h5,
 h6 {
-	color: #787878;
+	color: var(--heading-color);
+	transition: color 1s ease;
 	font-weight: 400;
 	line-height: 1em;
 	margin: 0 0 1em 0;
@@ -291,7 +354,8 @@ sup {
 
 hr {
 	border: 0;
-	border-bottom: solid 2px #efefef;
+	border-bottom: solid 2px var(--border-color);
+	transition: border-color 1s ease;
 	margin: 2em 0;
 }
 
@@ -300,16 +364,18 @@ hr.major {
 }
 
 blockquote {
-	border-left: solid 6px #efefef;
+	border-left: solid 6px var(--border-color);
+	transition: border-left-color 1s ease;
 	font-style: italic;
 	margin: 0 0 2em 0;
 	padding: 0.5em 0 0.5em 1.5em;
 }
 
 code {
-	background: #f7f7f7;
+	background: var(--code-bg-color);
 	border-radius: 0.35em;
-	border: solid 2px #efefef;
+	border: solid 2px var(--border-color);
+	transition: background-color 1s ease, border-color 1s ease;
 	font-family: "Courier New", monospace;
 	font-size: 0.9em;
 	margin: 0 0.25em;
