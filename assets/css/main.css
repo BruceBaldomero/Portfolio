@@ -252,7 +252,7 @@ input,
 select,
 textarea {
 	color: var(--text-color);
-	font-family: 'Roboto',sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 16pt;
 	font-weight: 400;
 	line-height: 1.75em;
@@ -2767,8 +2767,8 @@ input[type="button"]:disabled,
 	justify-content: space-between;
 	background-color: #1f1815;
 	background-attachment: scroll, scroll;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-	url("../../images/bcg10.jpg");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+		url("../../images/bcg10.jpg");
 	background-position: top left, top left;
 	background-repeat: repeat, no-repeat;
 	background-size: auto, 150%;
@@ -2817,6 +2817,11 @@ input[type="button"]:disabled,
 	font-size: 1.35em;
 	line-height: 1.75em;
 	margin: 0;
+}
+
+#header h1 .job-title {
+	white-space: nowrap;
+	/* This property prevents the text from wrapping onto multiple lines */
 }
 
 #header .image.avatar {
