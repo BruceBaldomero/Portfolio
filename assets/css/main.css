@@ -15,7 +15,7 @@
 
 body.light-mode {
 	/* Light Theme Overrides */
-	--background-color: #f4f4f4;
+	--background-color: #e7e7e7;
 	--text-color: #555;
 	--heading-color: #333;
 	--link-color: #0074f0;
@@ -2768,7 +2768,7 @@ input[type="button"]:disabled,
 	background-color: #1f1815;
 	background-attachment: scroll, scroll;
 	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-		url("../../images/bcg10.jpg");
+		url("../../images/bcg13.jpg");
 	background-position: top left, top left;
 	background-repeat: repeat, no-repeat;
 	background-size: auto, 150%;
@@ -2875,7 +2875,7 @@ input[type="button"]:disabled,
 }
 
 #main>section {
-	border-top: solid 2px #efefef;
+	border-top: solid 2px #818181;
 	margin: 4em 0 0 0;
 	padding: 4em 0 0 0;
 }
