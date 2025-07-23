@@ -10,6 +10,7 @@
 	--link-color: #ffb300;
 	--border-color: #ffffff;
 	--code-bg-color: #ffffff;
+	/*--header-bg-image: url('../../images/Geode.png'), linear-gradient(45deg, #2a2a2a 0%, #000000 100%); /* Default/Dark Mode Header Background */
 }
 
 body.light-mode {
@@ -20,6 +21,7 @@ body.light-mode {
 	--link-color: #0074f0;
 	--border-color: #000000;
 	--code-bg-color: #000000;
+	/*--header-bg-image: url('../../images/test.jpg'), linear-gradient(45deg, #f0f0f0 0%, #ffffff 100%); /* Light Mode Header Background */
 }
 
 /* Theme Toggle Button */
@@ -40,7 +42,7 @@ body.light-mode {
 	cursor: pointer;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 	z-index: 1000;
-	transition: background-color 0.3s ease;
+	transition: background-color 1s ease;
 }
 
 #theme-toggle:hover {
@@ -2765,10 +2767,12 @@ input[type="button"]:disabled,
 	justify-content: space-between;
 	background-color: #1f1815;
 	background-attachment: scroll, scroll;
-	background-image: url("images/overlay.png"), url("../../images/Geode.png");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+	url("../../images/bcg7.jpg");
 	background-position: top left, top left;
 	background-repeat: repeat, no-repeat;
 	background-size: auto, 150%;
+	transition: background-image 1s ease;
 	color: rgba(255, 255, 255, 0.5);
 	height: 100%;
 	left: 0;
