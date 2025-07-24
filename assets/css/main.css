@@ -3414,3 +3414,48 @@ body.is-touch .poptrox-popup .closer {
 	}
 
 }
+
+/* Add these rules to your main.css file, ideally towards the end or in a dedicated dark mode section */
+
+/* Dark Mode specific styles for form inputs */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="password"],
+body.dark-mode input[type="email"],
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #333333; /* Dark background for inputs in dark mode */
+    color: #eeeeee; /* Light text color for inputs in dark mode */
+    border-color: #555555; /* Slightly lighter border for contrast */
+}
+
+/* Style for input focus in dark mode */
+body.dark-mode input[type="text"]:focus,
+body.dark-mode input[type="password"]:focus,
+body.dark-mode input[type="email"]:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+    border-color: #49bf9d; /* Keep your existing focus border color, or adjust if needed */
+}
+
+/* Style for placeholder text in dark mode */
+body.dark-mode ::-webkit-input-placeholder { /* Chrome, Edge, Safari */
+    color: #aaaaaa; /* Lighter grey for placeholder text */
+}
+
+body.dark-mode ::-moz-placeholder { /* Firefox 19+ */
+    color: #aaaaaa;
+}
+
+body.dark-mode :-ms-input-placeholder { /* IE 10-11 */
+    color: #aaaaaa;
+}
+
+body.dark-mode ::placeholder { /* Most modern browsers */
+    color: #aaaaaa;
+}
+
+/* Ensure selected option in dropdown is visible */
+body.dark-mode select option {
+    background: #333333; /* Dark background for dropdown options */
+    color: #eeeeee; /* Light text for dropdown options */
+}
