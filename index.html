@@ -233,10 +233,6 @@
 
 		/* ── Contact ──────────────────────────────────────────── */
 		#three h2 { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 0; }
-		#three > .row { margin-top: 1.4rem; }
-		#three input[type="text"], #three input[type="email"], #three textarea { border-radius: 6px; font-size: 0.88rem; transition: border-color 0.2s; }
-		#three input[type="submit"] { border-radius: 6px; font-size: 0.85rem; letter-spacing: 0.03em; transition: background 0.2s, transform 0.15s; }
-		#three input[type="submit"]:hover { transform: translateY(-1px); }
 
 		/* ── Footer & misc ────────────────────────────────────── */
 		#footer .icons li a { transition: color 0.2s, transform 0.15s; display: inline-block; }
@@ -312,7 +308,8 @@
 			font-size: 0.83rem;
 			opacity: 0.75;
 		}
-		.contact-form-wrap { display: flex; flex-direction: column; gap: 10px; align-self: start; }
+		.contact-form-wrap { display: flex; flex-direction: column; gap: 10px; align-self: start; width: 100%; }
+		.contact-form-wrap form { display: flex; flex-direction: column; gap: 10px; }
 		.contact-form-grid {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
