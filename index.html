@@ -41,18 +41,13 @@
 
 		/* ── Nav tabs ─────────────────────────────────────────── */
 		#nav-tabs {
-			position: sticky;
-			top: 0;
-			z-index: 200;
 			display: flex;
-			gap: 4px;
-			padding: 10px 0 10px;
-			backdrop-filter: blur(12px);
-			-webkit-backdrop-filter: blur(12px);
-			border-bottom: 1px solid var(--divider);
-			margin-bottom: 2.5rem;
+			gap: 6px;
+			padding: 0 0 1.8rem;
+			margin-bottom: 0;
 			overflow-x: auto;
 			scrollbar-width: none;
+			flex-wrap: wrap;
 		}
 		#nav-tabs::-webkit-scrollbar { display: none; }
 		.nav-tab {
@@ -60,17 +55,23 @@
 			font-size: 0.68rem;
 			letter-spacing: 0.08em;
 			text-transform: uppercase;
-			padding: 5px 14px;
-			border-radius: 5px;
+			padding: 6px 16px;
+			border-radius: 20px;
 			border: 1px solid var(--tag-border);
-			background: var(--tag-bg);
+			background: transparent;
 			color: var(--muted);
 			cursor: pointer;
 			white-space: nowrap;
 			transition: background 0.2s, color 0.2s, border-color 0.2s;
 			text-decoration: none;
 		}
-		.nav-tab:hover, .nav-tab.active {
+		.nav-tab:hover {
+			background: var(--tag-bg);
+			border-color: var(--muted);
+			color: inherit !important;
+			text-decoration: none;
+		}
+		.nav-tab.active {
 			background: var(--accent-dim);
 			border-color: var(--accent-border);
 			color: var(--accent) !important;
