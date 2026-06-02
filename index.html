@@ -94,15 +94,9 @@
 			background: var(--accent);
 			opacity: 1;
 		}
-		/* On mobile the header collapses, so show tabs horizontally */
+		/* Hide nav tabs on mobile */
 		@media screen and (max-width: 980px) {
-			#nav-tabs {
-				flex-direction: row;
-				flex-wrap: wrap;
-				gap: 6px;
-				margin-top: 0.8rem;
-			}
-			.nav-tab { color: rgba(255,255,255,0.75); }
+			#nav-tabs { display: none; }
 		}
 
 		/* ── Reveal ───────────────────────────────────────────── */
@@ -251,6 +245,109 @@
 		.image.avatar:hover { border-color: var(--accent); }
 		#theme-toggle { border-radius: 8px; transition: background 0.2s, transform 0.15s; }
 		#theme-toggle:hover { transform: scale(1.05); }
+	
+		/* ── Contact ──────────────────────────────────────────────── */
+		.contact-layout {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 2.5rem;
+			align-items: start;
+		}
+		@media screen and (max-width: 768px) {
+			.contact-layout { grid-template-columns: 1fr; }
+		}
+		.contact-intro {
+			font-size: 0.92rem;
+			line-height: 1.7;
+			opacity: 0.65;
+			margin-bottom: 1.4rem;
+		}
+		.contact-items {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+		.contact-item {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			padding: 0.85rem 1rem;
+			border: 1px solid var(--card-border);
+			border-radius: 8px;
+			background: var(--card-bg);
+			text-decoration: none !important;
+			transition: border-color 0.2s, background 0.2s, transform 0.15s;
+		}
+		.contact-item:hover {
+			border-color: var(--accent-border);
+			background: var(--accent-dim);
+			transform: translateX(3px);
+		}
+		.contact-item-icon {
+			width: 36px;
+			height: 36px;
+			border-radius: 8px;
+			background: var(--accent-dim);
+			border: 1px solid var(--accent-border);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--accent);
+			font-size: 0.85rem;
+			flex-shrink: 0;
+		}
+		.contact-item div {
+			display: flex;
+			flex-direction: column;
+			gap: 2px;
+		}
+		.contact-item-label {
+			font-family: 'DM Mono', monospace;
+			font-size: 0.62rem;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--accent);
+		}
+		.contact-item-value {
+			font-size: 0.83rem;
+			opacity: 0.75;
+		}
+		.contact-form-wrap { display: flex; flex-direction: column; gap: 10px; }
+		.contact-form-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 10px;
+		}
+		@media screen and (max-width: 480px) {
+			.contact-form-grid { grid-template-columns: 1fr; }
+		}
+		.contact-form-wrap input,
+		.contact-form-wrap textarea {
+			width: 100%;
+			border-radius: 6px;
+			font-size: 0.88rem;
+			margin: 0;
+		}
+		.contact-form-wrap textarea { resize: vertical; }
+		.contact-submit {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 10px 20px;
+			background: var(--accent-dim);
+			border: 1px solid var(--accent-border);
+			color: var(--accent) !important;
+			border-radius: 6px;
+			font-size: 0.88rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background 0.2s, transform 0.15s;
+			align-self: flex-start;
+		}
+		.contact-submit:hover {
+			background: rgba(79,156,249,0.22);
+			transform: translateY(-1px);
+		}
 	</style>
 </head>
 
@@ -289,7 +386,7 @@
 					<p>My work spans SQL scripting, Playwright test automation, UAT, regression testing, database and dashboard management, SLA-aligned incident handling via Freshdesk, and cross-team technical support.</p>
 					<p>I'm most at home solving complex problems, streamlining messy processes, and building solutions that actually stick.</p>
 					<p>Outside of work: bouldering, cycling, football, and whatever new tech is worth exploring.</p>
-					<a href="https://drive.google.com/file/d/1lbe01F1XqLz3uQw3-7z5c3H4EX7ip9rJ/view?usp=sharing" target="_blank" class="cv-btn">
+					<a href="https://drive.google.com/file/d/14tzCKrzU45PDKyebb9Lunte5wu6eVqVr/view?usp=sharing" target="_blank" class="cv-btn">
 						<span class="fas fa-file-invoice"></span> View CV
 					</a>
 				</div>
@@ -297,7 +394,7 @@
 				<div class="about-right reveal reveal-delay-3">
 					<div class="stat-bar">
 						<div class="stat">
-							<span class="stat-num">4+</span>
+							<span class="stat-num">3+</span>
 							<span class="stat-label">Years at Adaro Optics</span>
 						</div>
 						<div class="stat">
@@ -598,18 +695,52 @@
 				<h2>Get In Touch</h2>
 				<div class="section-divider"></div>
 			</header>
-			<p class="reveal reveal-delay-1" style="opacity:0.62; font-size:0.92rem;">Open to new roles, contracts, or just a conversation. Drop me a message.</p>
-			<div class="row">
-				<div class="col-8 col-12-small reveal reveal-delay-2">
+
+			<div class="contact-layout reveal reveal-delay-1">
+				<!-- Left: quick links -->
+				<div class="contact-links">
+					<p class="contact-intro">Open to new roles, contracts, or just a conversation. Feel free to reach out directly or use the form.</p>
+					<div class="contact-items">
+						<a href="mailto:brucebaldomero@gmail.com" class="contact-item">
+							<span class="contact-item-icon"><i class="fas fa-envelope"></i></span>
+							<div>
+								<span class="contact-item-label">Email</span>
+								<span class="contact-item-value">brucebaldomero@gmail.com</span>
+							</div>
+						</a>
+						<a href="https://www.linkedin.com/in/brucebaldomero/" target="_blank" class="contact-item">
+							<span class="contact-item-icon"><i class="fab fa-linkedin"></i></span>
+							<div>
+								<span class="contact-item-label">LinkedIn</span>
+								<span class="contact-item-value">linkedin.com/in/brucebaldomero</span>
+							</div>
+						</a>
+						<a href="https://github.com/BruceBaldomero" target="_blank" class="contact-item">
+							<span class="contact-item-icon"><i class="fab fa-github"></i></span>
+							<div>
+								<span class="contact-item-label">GitHub</span>
+								<span class="contact-item-value">github.com/BruceBaldomero</span>
+							</div>
+						</a>
+						<a href="https://drive.google.com/file/d/14tzCKrzU45PDKyebb9Lunte5wu6eVqVr/view?usp=sharing" target="_blank" class="contact-item">
+							<span class="contact-item-icon"><i class="fas fa-file-invoice"></i></span>
+							<div>
+								<span class="contact-item-label">CV</span>
+								<span class="contact-item-value">View or download PDF</span>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<!-- Right: form -->
+				<div class="contact-form-wrap">
 					<form method="post" action="https://formspree.io/f/xdobrdoj">
-						<div class="row gtr-uniform gtr-50">
-							<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-							<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-							<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
-							<ul class="actions">
-								<li><input type="submit" value="Send Message" /></li>
-							</ul>
+						<div class="contact-form-grid">
+							<input type="text" name="name" id="name" placeholder="Name" />
+							<input type="email" name="email" id="email" placeholder="Email" />
 						</div>
+						<textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
+						<button type="submit" class="contact-submit">Send Message <i class="fas fa-arrow-right"></i></button>
 					</form>
 				</div>
 			</div>
@@ -622,7 +753,7 @@
 		<div class="inner">
 			<ul class="icons">
 				<li><a href="mailto:brucebaldomero@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-				<li><a href="https://drive.google.com/file/d/1mF5WQ9suhLOg8KQIWb1NiS5MONK4XMTv/view?usp=sharing" class="icon solid fa-file-invoice" target="_blank"><span class="label">CV</span></a></li>
+				<li><a href="https://drive.google.com/file/d/14tzCKrzU45PDKyebb9Lunte5wu6eVqVr/view?usp=sharing" class="icon solid fa-file-invoice" target="_blank"><span class="label">CV</span></a></li>
 				<li><a href="https://github.com/BruceBaldomero" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
 				<li><a href="https://www.linkedin.com/in/brucebaldomero/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
 				<li><a href="https://www.instagram.com/bruce_bonus/?hl=en" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
