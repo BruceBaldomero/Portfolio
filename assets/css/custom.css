@@ -3,6 +3,64 @@
 	#main {
 		max-width: none !important;
 	}
+
+	/* ── Responsive fixes ──────────────────────────────────── */
+
+	/* Fix job title overflow — template sets white-space:nowrap */
+	#header h1 .job-title {
+		white-space: normal !important;
+		word-break: break-word;
+		line-height: 1.4;
+	}
+
+	/* At 1280px the header shrinks to 30% — make sure nav tabs still fit */
+	@media screen and (max-width: 1280px) {
+		#nav-tabs { margin-top: 1rem; }
+		.nav-tab { font-size: 0.62rem; padding: 6px 9px; }
+	}
+
+	/* About layout — stack on medium screens */
+	@media screen and (max-width: 1100px) {
+		.about-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+		.stat-bar { flex-direction: row; flex-wrap: wrap; }
+		.stat { flex: 1 1 40%; }
+	}
+
+	/* Skills grid — 2 cols on medium */
+	@media screen and (max-width: 1100px) {
+		.skills-grid { grid-template-columns: repeat(2, 1fr); }
+	}
+
+	/* Contact layout — stack on medium */
+	@media screen and (max-width: 1100px) {
+		.contact-layout { grid-template-columns: 1fr; }
+	}
+
+	/* Timeline — tighten on small screens */
+	@media screen and (max-width: 736px) {
+		.timeline-header { flex-direction: column; gap: 4px; }
+		.timeline-meta { align-items: flex-start; }
+		.timeline-dates { text-align: left; }
+		.edu-item { flex-direction: column; align-items: flex-start; gap: 4px; }
+	}
+
+	/* Projects — 1 col on mobile */
+	@media screen and (max-width: 736px) {
+		.work-item { margin-bottom: 2rem; }
+	}
+
+	/* Contact form grid — stack on small */
+	@media screen and (max-width: 736px) {
+		.contact-form-grid { grid-template-columns: 1fr; }
+		.contact-items { gap: 6px; }
+	}
+
+	/* Stat bar — full width on mobile */
+	@media screen and (max-width: 480px) {
+		.stat { flex: 1 1 100%; }
+		.about-right { gap: 0.75rem; }
+		.cert-block { padding: 0.75rem; }
+	}
 	body, input, select, textarea, button { font-family: 'DM Sans', sans-serif; letter-spacing: -0.01em; }
 	h1, h2, h3, h4 { font-family: 'DM Sans', sans-serif; font-weight: 500; }
 
