@@ -1,4 +1,11 @@
 	/* ── Base ─────────────────────────────────────────────── */
+	/* Stretch main content to fill available width */
+	#main {
+		max-width: 100% !important;
+		width: 100% !important;
+		padding-right: 2rem !important;
+		box-sizing: border-box;
+	}
 	body, input, select, textarea, button { font-family: 'DM Sans', sans-serif; letter-spacing: -0.01em; }
 	h1, h2, h3, h4 { font-family: 'DM Sans', sans-serif; font-weight: 500; }
 
