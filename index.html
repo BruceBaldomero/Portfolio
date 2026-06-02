@@ -6,7 +6,7 @@
 	<title>Bruce Baldomero — Technical Operations & QA Specialist</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<meta name="description" content="Bruce Baldomero — Technical Operations & QA Specialist. SQL, QA testing, Playwright automation, system support." />
+	<meta name="description" content="Bruce Baldomero — Technical Operations & QA Specialist based in London. SQL, QA testing, Playwright automation, system support." />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="icon" type="image/png" sizes="32x32" href="images/icon4.png">
 
@@ -240,7 +240,18 @@
 		.work-item:hover { transform: translateY(-3px); }
 		.work-item .image.fit.thumb { border-radius: 8px; overflow: hidden; border: 1px solid var(--card-border); display: block; }
 		.work-item .image.fit.thumb img { width: 100%; height: 200px; object-fit: cover; object-position: center; display: block; }
-		.work-item h3 { font-size: 0.92rem; font-weight: 500; margin-top: 0.55rem; margin-bottom: 0.15rem; }
+		.work-item h3 { font-size: 0.92rem; font-weight: 500; margin-top: 0.55rem; margin-bottom: 0.15rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+		.project-year {
+			font-family: 'DM Mono', monospace;
+			font-size: 0.62rem;
+			letter-spacing: 0.08em;
+			color: var(--muted);
+			border: 1px solid var(--tag-border);
+			background: var(--tag-bg);
+			padding: 1px 6px;
+			border-radius: 3px;
+			font-weight: 400;
+		}
 		.work-item p.description { font-size: 0.8rem; line-height: 1.6; opacity: 0.62; margin: 0.25rem 0 0.5rem; }
 		.tech-tags { display: flex; flex-wrap: wrap; gap: 4px; margin: 0.35rem 0 0.6rem; }
 		.tech-tag { font-family: 'DM Mono', monospace; font-size: 0.64rem; padding: 2px 7px; border: 1px solid var(--tag-border); background: var(--tag-bg); border-radius: 3px; letter-spacing: 0.04em; opacity: 0.8; }
@@ -406,7 +417,7 @@
 
 			<div class="about-layout">
 				<div class="about-text reveal reveal-delay-2">
-					<p>Hi, I'm Bruce — a Technical Operations & QA Specialist at Adaro Optics, where I keep systems running, issues resolved, and workflows improving for clients like Vision Express, Boots, and Specsavers.</p>
+					<p>Hi, I'm Bruce — a London-based Technical Operations & QA Specialist at Adaro Optics, where I keep systems running, issues resolved, and workflows improving for clients like Vision Express, Boots, and Specsavers.</p>
 					<p>My work spans SQL scripting, Playwright test automation, UAT, regression testing, database and dashboard management, SLA-aligned incident handling via Freshdesk, and cross-team technical support.</p>
 					<p>I'm most at home solving complex problems, streamlining messy processes, and building solutions that actually stick.</p>
 					<p>Outside of work: bouldering, cycling, football, and whatever new tech is worth exploring.</p>
@@ -602,7 +613,7 @@
 							src="images/mukhafaceyoga.jpeg" alt="Mukha Face Yoga — holistic wellness website" loading="lazy" />
 						<p class="description">A full holistic wellness website for Mukha Face Yoga — founded by Mona, a Registered Nurse & Holistic Facial Therapist. Features service listings, booking enquiry form, and a clean, minimal design.</p>
 					</a>
-					<h3>Mukha Face Yoga</h3>
+					<h3>Mukha Face Yoga <span class="project-year">2025</span></h3>
 					<div class="tech-tags">
 						<span class="tech-tag">HTML</span>
 						<span class="tech-tag">CSS</span>
@@ -610,6 +621,7 @@
 						<span class="tech-tag">Web Design</span>
 					</div>
 					<ul class="actions">
+						<li><p><a href="https://github.com/BruceBaldomero/mukhafaceyoga" target="_blank" class="button icon brands fa-github">Code</a></p></li>
 						<li><p><a href="https://mukhafaceyoga.com" target="_blank" class="button icon solid fa-globe">Website</a></p></li>
 					</ul>
 				</article>
@@ -619,7 +631,7 @@
 							src="images/thumbs/solent_inspire_app_thumb.jpg" alt="Solent Inspire Mobile Application — React Native and Firebase" loading="lazy" />
 						<p class="description">A cross-platform mobile app built with React Native, Firebase, and Expo — designed to help students share and discover creative projects. Handles real-time data, user auth, and a content feed. Submitted as my final-year thesis.</p>
 					</a>
-					<h3>Solent Inspire Mobile Application</h3>
+					<h3>Solent Inspire Mobile Application <span class="project-year">2022</span></h3>
 					<div class="tech-tags">
 						<span class="tech-tag">React Native</span>
 						<span class="tech-tag">Firebase</span>
@@ -636,7 +648,7 @@
 							src="images/thumbs/solent_inspire_react_thumb.jpg" alt="Single Web Application — React and Node.js SPA" loading="lazy" />
 						<p class="description">A React and Node.js SPA where students upload and browse creative projects. Focused on component architecture, state management, and a clean, responsive UI deployed via GitHub Pages.</p>
 					</a>
-					<h3>Single Web Application</h3>
+					<h3>Single Web Application <span class="project-year">2022</span></h3>
 					<div class="tech-tags">
 						<span class="tech-tag">React</span>
 						<span class="tech-tag">Node.js</span>
@@ -653,7 +665,7 @@
 							src="images/thumbs/grapevine_clothing_thumb.jpg" alt="Grapevine Clothing — e-commerce website" loading="lazy" />
 						<p class="description">An independent e-commerce storefront that started as a Depop shop and grew into a fully responsive website. Built with HTML, CSS, and JavaScript — includes a working shopping cart and product listings.</p>
 					</a>
-					<h3>Grapevine Clothing</h3>
+					<h3>Grapevine Clothing <span class="project-year">2021</span></h3>
 					<div class="tech-tags">
 						<span class="tech-tag">HTML</span>
 						<span class="tech-tag">CSS</span>
@@ -671,7 +683,7 @@
 							src="images/thumbs/vegan_clothing_thumb.jpg" alt="Vegan Clothing Website — HTML CSS JavaScript" loading="lazy" />
 						<p class="description">My first full website — a product showcase promoting cruelty-free fashion. Built from scratch with HTML, CSS, and JavaScript. The project where I found my footing as a developer.</p>
 					</a>
-					<h3>Vegan Clothing Website</h3>
+					<h3>Vegan Clothing Website <span class="project-year">2020</span></h3>
 					<div class="tech-tags">
 						<span class="tech-tag">HTML</span>
 						<span class="tech-tag">CSS</span>
@@ -687,7 +699,7 @@
 					<a href="images/fulls/UI_UX.gif" class="image fit thumb"><img src="images/thumbs/UI_UX.jpg" alt="Human Digital Interaction Design — UI UX group project" loading="lazy" />
 						<p class="description">A UI/UX group project designing a job search platform. Covered user research, storyboarding, persona development, and interaction principles — with the full process documented in a design thesis.</p>
 					</a>
-					<h3>Human Digital Interaction Design</h3>
+					<h3>Human Digital Interaction Design <span class="project-year">2022</span></h3>
 					<div class="tech-tags">
 						<span class="tech-tag">UI/UX</span>
 						<span class="tech-tag">Figma</span>
@@ -702,7 +714,7 @@
 					<a href="images/fulls/php_html.gif" class="image fit thumb"><img src="images/thumbs/php_thumb.jpg" alt="Points of Interest — PHP and HTML site" loading="lazy" />
 						<p class="description">A PHP and HTML site letting users explore cities, landmarks, countryside spots, and local dining recommendations. Built to practise server-side scripting and dynamic content rendering.</p>
 					</a>
-					<h3>Points of Interest — PHP</h3>
+					<h3>Points of Interest — PHP <span class="project-year">2021</span></h3>
 					<div class="tech-tags">
 						<span class="tech-tag">PHP</span>
 						<span class="tech-tag">HTML</span>
