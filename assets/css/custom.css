@@ -1,4 +1,8 @@
 	/* ── Base ─────────────────────────────────────────────── */
+	/* Remove template max-width cap so content fills available space symmetrically */
+	#main {
+		max-width: none !important;
+	}
 	body, input, select, textarea, button { font-family: 'DM Sans', sans-serif; letter-spacing: -0.01em; }
 	h1, h2, h3, h4 { font-family: 'DM Sans', sans-serif; font-weight: 500; }
 
