@@ -5,70 +5,96 @@
 	<title>Bruce Baldomero — Technical Operations & QA Specialist</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<meta name="description" content="Bruce Baldomero — Technical Operations & QA Specialist. SQL, QA testing, system support, and process improvement." />
+	<meta name="description" content="Bruce Baldomero — Technical Operations & QA Specialist. SQL, QA testing, Playwright automation, system support." />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="icon" type="image/png" sizes="32x32" href="images/icon4.png">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 	<style>
-		/* ── Base font override ─────────────────────────────────── */
-		body, input, select, textarea, button {
-			font-family: 'DM Sans', sans-serif;
-			letter-spacing: -0.01em;
-		}
+		/* ── Base ─────────────────────────────────────────────── */
+		body, input, select, textarea, button { font-family: 'DM Sans', sans-serif; letter-spacing: -0.01em; }
 		h1, h2, h3, h4 { font-family: 'DM Sans', sans-serif; font-weight: 500; }
-		code, .mono { font-family: 'DM Mono', monospace; }
 
-		/* ── CSS Variables ──────────────────────────────────────── */
+		/* ── Variables ────────────────────────────────────────── */
 		:root {
 			--accent: #4f9cf9;
-			--accent-dim: rgba(79,156,249,0.12);
-			--accent-border: rgba(79,156,249,0.35);
+			--accent-dim: rgba(79,156,249,0.10);
+			--accent-border: rgba(79,156,249,0.30);
 			--card-bg: rgba(255,255,255,0.03);
 			--card-border: rgba(255,255,255,0.08);
 			--tag-bg: rgba(255,255,255,0.06);
 			--tag-border: rgba(255,255,255,0.12);
-			--text-muted: rgba(255,255,255,0.45);
+			--muted: rgba(255,255,255,0.45);
 			--divider: rgba(255,255,255,0.07);
-			--ease: cubic-bezier(0.4, 0, 0.2, 1);
+			--ease: cubic-bezier(0.4,0,0.2,1);
 		}
 		body.light-mode {
 			--card-bg: rgba(0,0,0,0.02);
 			--card-border: rgba(0,0,0,0.08);
 			--tag-bg: rgba(0,0,0,0.04);
 			--tag-border: rgba(0,0,0,0.12);
-			--text-muted: rgba(0,0,0,0.45);
+			--muted: rgba(0,0,0,0.45);
 			--divider: rgba(0,0,0,0.07);
 		}
 
-		/* ── Scroll reveal ──────────────────────────────────────── */
-		.reveal {
-			opacity: 0;
-			transform: translateY(22px);
-			transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+		/* ── Nav tabs ─────────────────────────────────────────── */
+		#nav-tabs {
+			position: sticky;
+			top: 0;
+			z-index: 200;
+			display: flex;
+			gap: 4px;
+			padding: 10px 0 10px;
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border-bottom: 1px solid var(--divider);
+			margin-bottom: 2.5rem;
+			overflow-x: auto;
+			scrollbar-width: none;
 		}
+		#nav-tabs::-webkit-scrollbar { display: none; }
+		.nav-tab {
+			font-family: 'DM Mono', monospace;
+			font-size: 0.68rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			padding: 5px 14px;
+			border-radius: 5px;
+			border: 1px solid var(--tag-border);
+			background: var(--tag-bg);
+			color: var(--muted);
+			cursor: pointer;
+			white-space: nowrap;
+			transition: background 0.2s, color 0.2s, border-color 0.2s;
+			text-decoration: none;
+		}
+		.nav-tab:hover, .nav-tab.active {
+			background: var(--accent-dim);
+			border-color: var(--accent-border);
+			color: var(--accent) !important;
+			text-decoration: none;
+		}
+
+		/* ── Reveal ───────────────────────────────────────────── */
+		.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
 		.reveal.visible { opacity: 1; transform: translateY(0); }
 		.reveal-delay-1 { transition-delay: 0.1s; }
 		.reveal-delay-2 { transition-delay: 0.2s; }
 		.reveal-delay-3 { transition-delay: 0.3s; }
 		.reveal-delay-4 { transition-delay: 0.4s; }
 
-		/* ── Section spacing ────────────────────────────────────── */
+		/* ── Section spacing ──────────────────────────────────── */
 		#main section { margin-bottom: 4rem; }
+		.section-divider { width: 28px; height: 2px; background: var(--accent); border-radius: 2px; margin: 0.4rem 0 1.4rem; opacity: 0.65; }
 
-		/* ── Hero / About ───────────────────────────────────────── */
-		#one .major h2 {
-			font-size: 2rem;
-			font-weight: 500;
-			letter-spacing: -0.03em;
-			margin-bottom: 0.1em;
-		}
+		/* ── About / Hero ─────────────────────────────────────── */
+		#one .major h2 { font-size: 2rem; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 0.1em; }
 		.hero-label {
 			display: inline-block;
 			font-family: 'DM Mono', monospace;
-			font-size: 0.7rem;
+			font-size: 0.68rem;
 			letter-spacing: 0.12em;
 			text-transform: uppercase;
 			color: var(--accent);
@@ -78,253 +104,118 @@
 			border-radius: 4px;
 			margin-bottom: 1.2rem;
 		}
-		.about-text { font-size: 1.05rem; line-height: 1.8; max-width: 560px; }
-		.about-text p { margin-bottom: 1rem; }
+		/* Two-column about layout */
+		.about-layout {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 3rem;
+			align-items: start;
+		}
+		@media (max-width: 768px) {
+			.about-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+		}
+		.about-text { font-size: 1rem; line-height: 1.85; }
+		.about-text p { margin-bottom: 0.9rem; }
+		.about-right { display: flex; flex-direction: column; gap: 1rem; }
+		.stat-bar { display: flex; flex-direction: column; gap: 0.7rem; }
+		.stat {
+			display: flex;
+			align-items: baseline;
+			gap: 10px;
+			padding: 0.7rem 1rem;
+			border: 1px solid var(--card-border);
+			border-radius: 8px;
+			background: var(--card-bg);
+		}
+		.stat-num { font-family: 'DM Mono', monospace; font-size: 1.3rem; font-weight: 500; color: var(--accent); line-height: 1; min-width: 42px; }
+		.stat-label { font-size: 0.82rem; opacity: 0.6; }
+		.cert-block { padding: 0.9rem 1rem; border: 1px solid var(--card-border); border-radius: 8px; background: var(--card-bg); }
+		.cert-block-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; display: block; }
+		.cert-list { list-style: none; padding: 0; margin: 0; }
+		.cert-list li { font-size: 0.83rem; opacity: 0.75; padding: 2px 0; }
+		.cert-list li::before { content: none !important; }
 
-		/* ── CV Button ──────────────────────────────────────────── */
+		/* CV btn */
 		.cv-btn {
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			padding: 10px 20px;
-			border: 1px solid var(--accent-border);
-			background: var(--accent-dim);
-			color: var(--accent) !important;
-			border-radius: 6px;
-			font-size: 0.88rem;
-			font-weight: 500;
-			letter-spacing: 0.02em;
-			text-decoration: none !important;
+			display: inline-flex; align-items: center; gap: 8px;
+			padding: 9px 18px; border: 1px solid var(--accent-border);
+			background: var(--accent-dim); color: var(--accent) !important;
+			border-radius: 6px; font-size: 0.85rem; font-weight: 500;
+			letter-spacing: 0.02em; text-decoration: none !important;
 			transition: background 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.15s var(--ease);
+			margin-top: 0.5rem;
 		}
-		.cv-btn:hover {
-			background: rgba(79,156,249,0.2);
-			border-color: rgba(79,156,249,0.6);
-			transform: translateY(-1px);
-		}
+		.cv-btn:hover { background: rgba(79,156,249,0.2); border-color: rgba(79,156,249,0.6); transform: translateY(-1px); }
 
-		/* ── Skills section ─────────────────────────────────────── */
-		#skills h2 { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 2rem; }
+		/* ── Skills ───────────────────────────────────────────── */
+		#skills h2 { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 0; }
 		.skills-grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 			gap: 1px;
 			border: 1px solid var(--divider);
 			border-radius: 10px;
 			overflow: hidden;
 			margin-bottom: 2.5rem;
 		}
-		.skill-group {
-			background: var(--card-bg);
-			padding: 1.2rem 1.4rem;
-			transition: background 0.2s;
-		}
+		.skill-group { background: var(--card-bg); padding: 1.1rem 1.3rem; transition: background 0.2s; }
 		.skill-group:hover { background: rgba(79,156,249,0.04); }
-		.skill-group-label {
-			font-family: 'DM Mono', monospace;
-			font-size: 0.65rem;
-			letter-spacing: 0.12em;
-			text-transform: uppercase;
-			color: var(--accent);
-			margin-bottom: 0.7rem;
-			display: block;
-		}
-		.skill-group ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-		}
-		.skill-group ul li {
-			font-size: 0.88rem;
-			padding: 2px 0;
-			opacity: 0.8;
-			transition: opacity 0.15s;
-		}
-		.skill-group ul li::before { content: none; }
+		.skill-group-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; display: block; }
+		.skill-group ul { list-style: none; padding: 0; margin: 0; }
+		.skill-group ul li { font-size: 0.85rem; padding: 2px 0; opacity: 0.8; transition: opacity 0.15s; }
+		.skill-group ul li::before { content: none !important; }
 		.skill-group:hover ul li { opacity: 1; }
 
-		/* ── Experience timeline ────────────────────────────────── */
-		.timeline { position: relative; padding-left: 1.5rem; }
-		.timeline::before {
-			content: '';
-			position: absolute;
-			left: 0;
-			top: 8px;
-			bottom: 0;
-			width: 1px;
-			background: var(--divider);
-		}
-		.timeline-item { position: relative; margin-bottom: 2.2rem; }
-		.timeline-dot {
-			position: absolute;
-			left: -1.5rem;
-			top: 6px;
-			width: 7px;
-			height: 7px;
-			border-radius: 50%;
-			background: var(--accent);
-			border: 2px solid var(--accent);
-			box-shadow: 0 0 0 3px var(--accent-dim);
-		}
-		.timeline-header {
-			display: flex;
-			justify-content: space-between;
-			align-items: flex-start;
-			flex-wrap: wrap;
-			gap: 4px;
-			margin-bottom: 0.6rem;
-		}
-		.timeline-role { font-weight: 500; font-size: 1rem; }
-		.timeline-company {
-			font-family: 'DM Mono', monospace;
-			font-size: 0.75rem;
-			color: var(--text-muted);
-			padding: 2px 8px;
-			border: 1px solid var(--tag-border);
-			background: var(--tag-bg);
-			border-radius: 4px;
-		}
-		.timeline-item ul {
-			padding-left: 1.1rem;
-			margin: 0;
-		}
-		.timeline-item ul li {
-			font-size: 0.88rem;
-			line-height: 1.7;
-			opacity: 0.75;
-			margin-bottom: 0.25rem;
-		}
-		.timeline-item ul li::before { font-size: 0.7rem; top: 0.35em; }
-		.edu-item {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			flex-wrap: wrap;
-			gap: 6px;
-			padding: 1rem 1.25rem;
-			border: 1px solid var(--card-border);
-			border-radius: 8px;
-			background: var(--card-bg);
-		}
-		.edu-degree { font-weight: 500; font-size: 0.95rem; }
-		.edu-uni {
-			font-family: 'DM Mono', monospace;
-			font-size: 0.75rem;
-			color: var(--text-muted);
-		}
+		/* ── Timeline ─────────────────────────────────────────── */
+		.section-sublabel { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; margin-bottom: 1rem; margin-top: 2rem; display: block; }
+		.timeline { position: relative; padding-left: 1.4rem; }
+		.timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: var(--divider); }
+		.timeline-item { position: relative; margin-bottom: 2rem; }
+		.timeline-dot { position: absolute; left: -1.44rem; top: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+		.timeline-dot.dim { background: var(--muted); box-shadow: none; }
+		.timeline-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 4px; margin-bottom: 0.5rem; }
+		.timeline-role { font-weight: 500; font-size: 0.95rem; }
+		.timeline-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+		.timeline-company { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); padding: 2px 8px; border: 1px solid var(--tag-border); background: var(--tag-bg); border-radius: 4px; }
+		.timeline-dates { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); text-align: right; }
+		.timeline-item ul { padding-left: 1rem; margin: 0; }
+		.timeline-item ul li { font-size: 0.85rem; line-height: 1.7; opacity: 0.72; margin-bottom: 0.2rem; }
+		.timeline-item ul li::before { font-size: 0.65rem; top: 0.38em; }
+		.edu-item { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; padding: 0.9rem 1.1rem; border: 1px solid var(--card-border); border-radius: 8px; background: var(--card-bg); margin-bottom: 0.6rem; }
+		.edu-degree { font-weight: 500; font-size: 0.92rem; }
+		.edu-right { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+		.edu-uni { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); }
+		.edu-dates { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); opacity: 0.7; }
 
-		/* ── Projects ───────────────────────────────────────────── */
-		#two h2 { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 0.4rem; }
-		#two > p { margin-bottom: 1.5rem; font-size: 0.9rem; opacity: 0.6; }
-		.work-item {
-			transition: transform 0.25s var(--ease);
-		}
+		/* ── Projects ─────────────────────────────────────────── */
+		#two h2 { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 0; }
+		#two > p { margin-bottom: 1.5rem; font-size: 0.88rem; opacity: 0.55; }
+		.work-item { transition: transform 0.25s var(--ease); }
 		.work-item:hover { transform: translateY(-3px); }
-		.work-item .image.fit.thumb {
-			border-radius: 8px;
-			overflow: hidden;
-			border: 1px solid var(--card-border);
-		}
-		.work-item h3 { font-size: 0.95rem; font-weight: 500; margin-top: 0.6rem; margin-bottom: 0.2rem; }
-		.work-item p.description { font-size: 0.82rem; line-height: 1.6; opacity: 0.65; margin: 0.3rem 0 0.6rem; }
-		.tech-tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 0.4rem 0 0.7rem; }
-		.tech-tag {
-			font-family: 'DM Mono', monospace;
-			font-size: 0.67rem;
-			padding: 2px 7px;
-			border: 1px solid var(--tag-border);
-			background: var(--tag-bg);
-			border-radius: 3px;
-			letter-spacing: 0.04em;
-			opacity: 0.8;
-		}
-		.work-item .actions { margin-top: 0.5rem; }
+		.work-item .image.fit.thumb { border-radius: 8px; overflow: hidden; border: 1px solid var(--card-border); }
+		.work-item h3 { font-size: 0.92rem; font-weight: 500; margin-top: 0.55rem; margin-bottom: 0.15rem; }
+		.work-item p.description { font-size: 0.8rem; line-height: 1.6; opacity: 0.62; margin: 0.25rem 0 0.5rem; }
+		.tech-tags { display: flex; flex-wrap: wrap; gap: 4px; margin: 0.35rem 0 0.6rem; }
+		.tech-tag { font-family: 'DM Mono', monospace; font-size: 0.64rem; padding: 2px 7px; border: 1px solid var(--tag-border); background: var(--tag-bg); border-radius: 3px; letter-spacing: 0.04em; opacity: 0.8; }
+		.work-item .actions { margin-top: 0.4rem; }
 		.work-item .actions li p { margin: 0; }
-		.work-item .button {
-			font-size: 0.78rem;
-			padding: 0 1rem;
-			height: 2rem;
-			line-height: 2rem;
-			border-radius: 5px;
-			transition: background 0.2s, border-color 0.2s, transform 0.15s;
-		}
+		.work-item .button { font-size: 0.76rem; padding: 0 0.9rem; height: 1.9rem; line-height: 1.9rem; border-radius: 5px; transition: background 0.2s, border-color 0.2s, transform 0.15s; }
 		.work-item .button:hover { transform: translateY(-1px); }
 
-		/* ── Contact ────────────────────────────────────────────── */
-		#three h2 { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 0.3rem; }
-		#three > .row { margin-top: 1.5rem; }
-		#three input[type="text"],
-		#three input[type="email"],
-		#three textarea {
-			border-radius: 6px;
-			font-size: 0.9rem;
-			transition: border-color 0.2s;
-		}
-		#three input[type="submit"] {
-			border-radius: 6px;
-			font-size: 0.88rem;
-			letter-spacing: 0.03em;
-			transition: background 0.2s, transform 0.15s;
-		}
+		/* ── Contact ──────────────────────────────────────────── */
+		#three h2 { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 0; }
+		#three > .row { margin-top: 1.4rem; }
+		#three input[type="text"], #three input[type="email"], #three textarea { border-radius: 6px; font-size: 0.88rem; transition: border-color 0.2s; }
+		#three input[type="submit"] { border-radius: 6px; font-size: 0.85rem; letter-spacing: 0.03em; transition: background 0.2s, transform 0.15s; }
 		#three input[type="submit"]:hover { transform: translateY(-1px); }
 
-		/* ── Theme toggle ───────────────────────────────────────── */
-		#theme-toggle {
-			border-radius: 8px;
-			transition: background 0.2s, transform 0.15s;
-		}
-		#theme-toggle:hover { transform: scale(1.05); }
-
-		/* ── Footer ─────────────────────────────────────────────── */
-		#footer .icons li a {
-			transition: color 0.2s, transform 0.15s;
-			display: inline-block;
-		}
+		/* ── Footer & misc ────────────────────────────────────── */
+		#footer .icons li a { transition: color 0.2s, transform 0.15s; display: inline-block; }
 		#footer .icons li a:hover { transform: translateY(-2px); color: var(--accent) !important; }
-
-		/* ── Subtle section divider ─────────────────────────────── */
-		.section-divider {
-			width: 32px;
-			height: 2px;
-			background: var(--accent);
-			border-radius: 2px;
-			margin: 0.5rem 0 1.5rem;
-			opacity: 0.7;
-		}
-
-		/* ── Stat bar ────────────────────────────────────────────── */
-		.stat-bar {
-			display: flex;
-			gap: 1.5rem;
-			flex-wrap: wrap;
-			margin: 1.5rem 0 2rem;
-		}
-		.stat {
-			display: flex;
-			flex-direction: column;
-			gap: 2px;
-		}
-		.stat-num {
-			font-family: 'DM Mono', monospace;
-			font-size: 1.5rem;
-			font-weight: 500;
-			color: var(--accent);
-			line-height: 1;
-		}
-		.stat-label {
-			font-size: 0.72rem;
-			text-transform: uppercase;
-			letter-spacing: 0.08em;
-			opacity: 0.5;
-		}
-
-		/* ── Avatar ring ─────────────────────────────────────────── */
-		.image.avatar {
-			border-radius: 50%;
-			border: 2px solid var(--accent-border);
-			transition: border-color 0.3s;
-		}
+		.image.avatar { border-radius: 50%; border: 2px solid var(--accent-border); transition: border-color 0.3s; }
 		.image.avatar:hover { border-color: var(--accent); }
+		#theme-toggle { border-radius: 8px; transition: background 0.2s, transform 0.15s; }
+		#theme-toggle:hover { transform: scale(1.05); }
 	</style>
 </head>
 
@@ -341,41 +232,62 @@
 
 	<div id="main">
 
+		<!-- Nav tabs -->
+		<nav id="nav-tabs" aria-label="Page sections">
+			<a href="#one"     class="nav-tab active">About</a>
+			<a href="#skills"  class="nav-tab">Skills</a>
+			<a href="#two"     class="nav-tab">Projects</a>
+			<a href="#three"   class="nav-tab">Contact</a>
+		</nav>
+
 		<!-- About -->
 		<section id="one">
 			<div class="reveal">
-				<span class="hero-label">Available for opportunities</span>
+				<span class="hero-label">Open to opportunities</span>
 			</div>
 			<header class="major reveal reveal-delay-1">
 				<h2>About Me</h2>
 			</header>
 			<div class="section-divider reveal reveal-delay-1"></div>
-			<div class="about-text reveal reveal-delay-2">
-				<p>Hi, I'm Bruce — a Technical Operations & QA Specialist at Adaro Optics, where I keep systems running, issues resolved, and workflows improving for clients like Vision Express, Boots, and Specsavers.</p>
-				<p>My work spans SQL scripting, QA and regression testing, database and dashboard management, and cross-team technical support. I'm most at home solving complex problems, streamlining messy processes, and building solutions that actually stick.</p>
-				<p>Outside of work: bouldering, cycling, football, and whatever new tech is worth exploring.</p>
-			</div>
 
-			<div class="stat-bar reveal reveal-delay-3">
-				<div class="stat">
-					<span class="stat-num">3+</span>
-					<span class="stat-label">Years experience</span>
+			<div class="about-layout">
+				<div class="about-text reveal reveal-delay-2">
+					<p>Hi, I'm Bruce — a Technical Operations & QA Specialist at Adaro Optics, where I keep systems running, issues resolved, and workflows improving for clients like Vision Express, Boots, and Specsavers.</p>
+					<p>My work spans SQL scripting, Playwright test automation, UAT, regression testing, database and dashboard management, SLA-aligned incident handling via Freshdesk, and cross-team technical support.</p>
+					<p>I'm most at home solving complex problems, streamlining messy processes, and building solutions that actually stick.</p>
+					<p>Outside of work: bouldering, cycling, football, and whatever new tech is worth exploring.</p>
+					<a href="https://drive.google.com/file/d/1lbe01F1XqLz3uQw3-7z5c3H4EX7ip9rJ/view?usp=sharing" target="_blank" class="cv-btn">
+						<span class="fas fa-file-invoice"></span> View CV
+					</a>
 				</div>
-				<div class="stat">
-					<span class="stat-num">10+</span>
-					<span class="stat-label">Major clients supported</span>
-				</div>
-				<div class="stat">
-					<span class="stat-num">6</span>
-					<span class="stat-label">Projects shipped</span>
-				</div>
-			</div>
 
-			<div class="reveal reveal-delay-4">
-				<a href="https://drive.google.com/file/d/14tzCKrzU45PDKyebb9Lunte5wu6eVqVr/view?usp=sharing"
-					target="_blank" class="cv-btn">
-					<span class="fas fa-file-invoice"></span> View CV
-				</a>
+				<div class="about-right reveal reveal-delay-3">
+					<div class="stat-bar">
+						<div class="stat">
+							<span class="stat-num">4+</span>
+							<span class="stat-label">Years at Adaro Optics</span>
+						</div>
+						<div class="stat">
+							<span class="stat-num">10+</span>
+							<span class="stat-label">Major retail clients supported</span>
+						</div>
+						<div class="stat">
+							<span class="stat-num">3</span>
+							<span class="stat-label">Roles across tech & support</span>
+						</div>
+						<div class="stat">
+							<span class="stat-num">7</span>
+							<span class="stat-label">Projects shipped</span>
+						</div>
+					</div>
+					<div class="cert-block">
+						<span class="cert-block-label">Certifications</span>
+						<ul class="cert-list">
+							<li>Cisco CCNA — Intro to Networks</li>
+							<li>Cisco CCNA — Routing & Switching</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</section>
 
@@ -390,37 +302,37 @@
 				<div class="skill-group">
 					<span class="skill-group-label">Languages</span>
 					<ul>
-						<li>SQL</li>
-						<li>JavaScript</li>
+						<li>SQL / T-SQL</li>
+						<li>JavaScript / TypeScript</li>
 						<li>PHP</li>
 						<li>HTML & CSS</li>
 					</ul>
 				</div>
 				<div class="skill-group">
-					<span class="skill-group-label">Frameworks & Tools</span>
+					<span class="skill-group-label">Frameworks & Dev</span>
 					<ul>
-						<li>React</li>
+						<li>React / React Native</li>
 						<li>Node.js</li>
 						<li>Firebase</li>
-						<li>Expo</li>
+						<li>Playwright</li>
 					</ul>
 				</div>
 				<div class="skill-group">
 					<span class="skill-group-label">QA & Testing</span>
 					<ul>
-						<li>Regression Testing</li>
-						<li>QA Processes</li>
-						<li>Test Documentation</li>
-						<li>Bug Reporting</li>
+						<li>Playwright (TypeScript)</li>
+						<li>Regression & UAT</li>
+						<li>Test Planning</li>
+						<li>Defect Investigation & RCA</li>
 					</ul>
 				</div>
 				<div class="skill-group">
 					<span class="skill-group-label">Systems & Ops</span>
 					<ul>
-						<li>System Troubleshooting</li>
-						<li>Database Management</li>
-						<li>Dashboard Admin</li>
-						<li>Server-side Ops</li>
+						<li>Freshdesk / SLA Mgmt</li>
+						<li>SSMS / SQL Server</li>
+						<li>TeamViewer</li>
+						<li>Windows 10/11</li>
 					</ul>
 				</div>
 				<div class="skill-group">
@@ -428,43 +340,94 @@
 					<ul>
 						<li>Stripe</li>
 						<li>Smart Debit</li>
-						<li>Reporting Tools</li>
-						<li>Internal Tooling</li>
+						<li>EPI / PIM Systems</li>
+						<li>Magento</li>
 					</ul>
 				</div>
 				<div class="skill-group">
-					<span class="skill-group-label">Soft Skills</span>
+					<span class="skill-group-label">Collaboration</span>
 					<ul>
-						<li>Documentation</li>
-						<li>Onboarding</li>
-						<li>Vendor Liaison</li>
-						<li>Cross-team Support</li>
+						<li>Confluence</li>
+						<li>Jira / Trello</li>
+						<li>Microsoft 365</li>
+						<li>Documentation & KB</li>
 					</ul>
 				</div>
 			</div>
 
-			<h3 style="font-size:1rem; font-weight:500; opacity:0.6; letter-spacing:0.08em; text-transform:uppercase; font-family:'DM Mono',monospace; font-size:0.7rem; margin-bottom:1.2rem;" class="reveal reveal-delay-2">Experience</h3>
+			<span class="section-sublabel reveal reveal-delay-2">Experience</span>
 			<div class="timeline reveal reveal-delay-2">
+
 				<div class="timeline-item">
 					<div class="timeline-dot"></div>
 					<div class="timeline-header">
 						<span class="timeline-role">Technical Operations & QA Specialist</span>
-						<span class="timeline-company">Adaro Optics — Current</span>
+						<div class="timeline-meta">
+							<span class="timeline-company">Adaro Optics</span>
+							<span class="timeline-dates">Apr 2026 – Present</span>
+						</div>
 					</div>
 					<ul>
-						<li>Technical support for internal teams and major retail clients — Vision Express, Boots, David Clulow, Specsavers</li>
-						<li>SQL scripting for reporting, data queries, and issue investigation</li>
-						<li>Lead QA and regression testing across system updates and feature rollouts</li>
-						<li>Vendor escalations and integration management with Stripe and Smart Debit</li>
-						<li>Own documentation, onboarding materials, and process improvement initiatives</li>
+						<li>QA processes including UAT, regression testing, and Playwright (TypeScript) automated test suites</li>
+						<li>Technical documentation strategy in Confluence — reusable references that reduce onboarding time</li>
+						<li>Primary liaison between Operations, Development, and vendors (Stripe, Smart Debit)</li>
+						<li>SLA-aligned incident management via Freshdesk across high-volume support queues</li>
+						<li>SQL scripts to automate operational tasks and generate Finance reports (LBAs, payment plans, write-offs)</li>
 					</ul>
 				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-dot"></div>
+					<div class="timeline-header">
+						<span class="timeline-role">Application Analyst</span>
+						<div class="timeline-meta">
+							<span class="timeline-company">Adaro Optics</span>
+							<span class="timeline-dates">May 2023 – Mar 2026</span>
+						</div>
+					</div>
+					<ul>
+						<li>Diagnosed and resolved software issues across instances, servers, databases, SSL certificates, and dashboards</li>
+						<li>Managed onboarding and offboarding — account provisioning, VPN setup, mailbox configuration, asset management</li>
+						<li>Delivered user training and knowledge-sharing sessions on new features and best practices</li>
+						<li>Conducted direct debit checks, collection runs, charge reports, and Finance Department reporting</li>
+						<li>Hardware support for PC workstations, printers, and peripherals; out-of-hours on-call rota</li>
+					</ul>
+				</div>
+
+				<div class="timeline-item">
+					<div class="timeline-dot dim"></div>
+					<div class="timeline-header">
+						<span class="timeline-role">Software Support Analyst / Trainee Web Implementation</span>
+						<div class="timeline-meta">
+							<span class="timeline-company">Calculus Software Solutions</span>
+							<span class="timeline-dates">Sep 2022 – Nov 2022</span>
+						</div>
+					</div>
+					<ul>
+						<li>Remote support for bespoke business management software (NCompass) and eCommerce platforms</li>
+						<li>Resolved sync issues between internal software, branch servers, and websites</li>
+						<li>Updated product data in EPI/PIM systems; front-end changes via CSS/HTML and Magento backend</li>
+						<li>Attended client sites to gather web implementation requirements</li>
+					</ul>
+				</div>
+
 			</div>
 
-			<h3 style="font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; opacity:0.6; margin-bottom:1rem;" class="reveal reveal-delay-3">Education</h3>
-			<div class="edu-item reveal reveal-delay-3">
-				<span class="edu-degree">BSc Computer Networks & Web Design</span>
-				<span class="edu-uni">Southampton Solent University</span>
+			<span class="section-sublabel reveal reveal-delay-3">Education</span>
+			<div class="reveal reveal-delay-3">
+				<div class="edu-item">
+					<span class="edu-degree">Diploma of Higher Education — Computer Networks & Web Design</span>
+					<div class="edu-right">
+						<span class="edu-uni">Southampton Solent University</span>
+						<span class="edu-dates">2018 – 2022</span>
+					</div>
+				</div>
+				<div class="edu-item">
+					<span class="edu-degree">A-Level: Medical Science (Dist.), Media Studies, ICT</span>
+					<div class="edu-right">
+						<span class="edu-uni">St Gregory's Catholic School</span>
+					</div>
+				</div>
 			</div>
 		</section>
 
@@ -478,6 +441,23 @@
 			<div class="row">
 
 				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-1">
+					<a href="https://mukhafaceyoga.com" target="_blank" class="image fit thumb"><img
+							src="https://mukhafaceyoga.com/images/mona.jpeg" alt="Mukha Face Yoga" style="object-fit:cover;height:200px;" />
+						<p class="description">A full holistic wellness website for Mukha Face Yoga — founded by Mona, a Registered Nurse & Holistic Facial Therapist. Features service listings, booking enquiry form, and a clean, minimal design.</p>
+					</a>
+					<h3>Mukha Face Yoga</h3>
+					<div class="tech-tags">
+						<span class="tech-tag">HTML</span>
+						<span class="tech-tag">CSS</span>
+						<span class="tech-tag">JavaScript</span>
+						<span class="tech-tag">Web Design</span>
+					</div>
+					<ul class="actions">
+						<li><p><a href="https://mukhafaceyoga.com" target="_blank" class="button icon solid fa-globe">Website</a></p></li>
+					</ul>
+				</article>
+
+				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-2">
 					<a href="images/fulls/solent_inspire_application.gif" class="image fit thumb"><img
 							src="images/thumbs/solent_inspire_app_thumb.jpg" alt="Solent Inspire Mobile App" />
 						<p class="description">A cross-platform mobile app built with React Native, Firebase, and Expo — designed to help students share and discover creative projects. Handles real-time data, user auth, and a content feed. Submitted as my final-year thesis.</p>
@@ -494,7 +474,7 @@
 					</ul>
 				</article>
 
-				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-2">
+				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-1">
 					<a href="images/fulls/solent_inspire_react.gif" class="image fit thumb"><img
 							src="images/thumbs/solent_inspire_react_thumb.jpg" alt="Single Web Application" />
 						<p class="description">A React and Node.js SPA where students upload and browse creative projects. Focused on component architecture, state management, and a clean, responsive UI deployed via GitHub Pages.</p>
@@ -511,7 +491,7 @@
 					</ul>
 				</article>
 
-				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-1">
+				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-2">
 					<a href="images/fulls/grapevine_clothing.gif" class="image fit thumb"><img
 							src="images/thumbs/grapevine_clothing_thumb.jpg" alt="Grapevine Clothing" />
 						<p class="description">An independent e-commerce storefront that started as a Depop shop and grew into a fully responsive website. Built with HTML, CSS, and JavaScript — includes a working shopping cart and product listings.</p>
@@ -529,7 +509,7 @@
 					</ul>
 				</article>
 
-				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-2">
+				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-1">
 					<a href="images/fulls/vegan_clothing_.gif" class="image fit thumb"><img
 							src="images/thumbs/vegan_clothing_thumb.jpg" alt="Vegan Clothing Website" />
 						<p class="description">My first full website — a product showcase promoting cruelty-free fashion. Built from scratch with HTML, CSS, and JavaScript. The project where I found my footing as a developer.</p>
@@ -546,7 +526,7 @@
 					</ul>
 				</article>
 
-				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-1">
+				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-2">
 					<a href="images/fulls/UI_UX.gif" class="image fit thumb"><img src="images/thumbs/UI_UX.jpg" alt="Human Digital Interaction Design" />
 						<p class="description">A UI/UX group project designing a job search platform. Covered user research, storyboarding, persona development, and interaction principles — with the full process documented in a design thesis.</p>
 					</a>
@@ -561,7 +541,7 @@
 					</ul>
 				</article>
 
-				<article id="gallery" class="col-6 col-12-xsmall work-item reveal reveal-delay-2">
+				<article id="gallery" class="col-6 col-12-xsmall work-item reveal reveal-delay-1">
 					<a href="images/fulls/php_html.gif" class="image fit thumb"><img src="images/thumbs/php_thumb.jpg" alt="Points of Interest PHP" />
 						<p class="description">A PHP and HTML site letting users explore cities, landmarks, countryside spots, and local dining recommendations. Built to practise server-side scripting and dynamic content rendering.</p>
 					</a>
@@ -585,7 +565,7 @@
 				<h2>Get In Touch</h2>
 				<div class="section-divider"></div>
 			</header>
-			<p class="reveal reveal-delay-1" style="opacity:0.65; font-size:0.95rem;">Open to new roles, contracts, or just a conversation. Drop me a message.</p>
+			<p class="reveal reveal-delay-1" style="opacity:0.62; font-size:0.92rem;">Open to new roles, contracts, or just a conversation. Drop me a message.</p>
 			<div class="row">
 				<div class="col-8 col-12-small reveal reveal-delay-2">
 					<form method="post" action="https://formspree.io/f/xdobrdoj">
@@ -609,7 +589,7 @@
 		<div class="inner">
 			<ul class="icons">
 				<li><a href="mailto:brucebaldomero@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-				<li><a href="https://drive.google.com/file/d/14tzCKrzU45PDKyebb9Lunte5wu6eVqVr/view?usp=sharing" class="icon solid fa-file-invoice" target="_blank"><span class="label">CV</span></a></li>
+				<li><a href="https://drive.google.com/file/d/1mF5WQ9suhLOg8KQIWb1NiS5MONK4XMTv/view?usp=sharing" class="icon solid fa-file-invoice" target="_blank"><span class="label">CV</span></a></li>
 				<li><a href="https://github.com/BruceBaldomero" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
 				<li><a href="https://www.linkedin.com/in/brucebaldomero/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
 				<li><a href="https://www.instagram.com/bruce_bonus/?hl=en" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
@@ -626,7 +606,6 @@
 		<span class="fas fa-moon"></span>
 	</button>
 
-	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.poptrox.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
@@ -640,43 +619,47 @@
 		const body = document.body;
 		const sunIcon = themeToggle.querySelector('.fa-sun');
 		const moonIcon = themeToggle.querySelector('.fa-moon');
-
-		const currentTheme = localStorage.getItem('theme');
-		if (currentTheme) {
-			body.classList.add(currentTheme);
-			sunIcon.style.display = currentTheme === 'light-mode' ? 'none' : 'inline-block';
-			moonIcon.style.display = currentTheme === 'light-mode' ? 'inline-block' : 'none';
-		} else {
-			body.classList.add('dark-mode');
-			sunIcon.style.display = 'inline-block';
-			moonIcon.style.display = 'none';
-		}
-
+		const savedTheme = localStorage.getItem('theme') || 'dark-mode';
+		body.classList.add(savedTheme);
+		sunIcon.style.display  = savedTheme === 'light-mode' ? 'none' : 'inline-block';
+		moonIcon.style.display = savedTheme === 'light-mode' ? 'inline-block' : 'none';
 		themeToggle.addEventListener('click', () => {
-			if (body.classList.contains('dark-mode')) {
-				body.classList.replace('dark-mode', 'light-mode');
-				localStorage.setItem('theme', 'light-mode');
-				sunIcon.style.display = 'none';
-				moonIcon.style.display = 'inline-block';
-			} else {
-				body.classList.replace('light-mode', 'dark-mode');
-				localStorage.setItem('theme', 'dark-mode');
-				sunIcon.style.display = 'inline-block';
-				moonIcon.style.display = 'none';
-			}
+			const isDark = body.classList.contains('dark-mode');
+			body.classList.replace(isDark ? 'dark-mode' : 'light-mode', isDark ? 'light-mode' : 'dark-mode');
+			localStorage.setItem('theme', isDark ? 'light-mode' : 'dark-mode');
+			sunIcon.style.display  = isDark ? 'none' : 'inline-block';
+			moonIcon.style.display = isDark ? 'inline-block' : 'none';
 		});
 
 		/* ── Scroll reveal ── */
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add('visible');
-					observer.unobserve(entry.target);
+		const revealObserver = new IntersectionObserver((entries) => {
+			entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+		}, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+		document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+		/* ── Nav tab active state on scroll ── */
+		const sections = ['one','skills','two','three'];
+		const tabs = document.querySelectorAll('.nav-tab');
+		const sectionEls = sections.map(id => document.getElementById(id));
+		const navObserver = new IntersectionObserver((entries) => {
+			entries.forEach(e => {
+				if (e.isIntersecting) {
+					tabs.forEach(t => t.classList.remove('active'));
+					const match = document.querySelector(`.nav-tab[href="#${e.target.id}"]`);
+					if (match) match.classList.add('active');
 				}
 			});
-		}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+		}, { threshold: 0.25 });
+		sectionEls.forEach(el => { if (el) navObserver.observe(el); });
 
-		document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+		/* ── Smooth scroll for tabs ── */
+		tabs.forEach(tab => {
+			tab.addEventListener('click', e => {
+				e.preventDefault();
+				const target = document.querySelector(tab.getAttribute('href'));
+				if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			});
+		});
 	</script>
 
 </body>
