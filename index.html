@@ -42,40 +42,64 @@
 		/* ── Nav tabs ─────────────────────────────────────────── */
 		#nav-tabs {
 			display: flex;
-			gap: 6px;
-			padding: 0 0 0.6rem;
-			margin-bottom: 0;
-			overflow-x: auto;
-			scrollbar-width: none;
-			flex-wrap: wrap;
+			flex-direction: column;
+			gap: 4px;
+			margin-top: 1.4rem;
+			width: 100%;
 		}
-		#nav-tabs::-webkit-scrollbar { display: none; }
 		.nav-tab {
 			font-family: 'DM Mono', monospace;
 			font-size: 0.68rem;
 			letter-spacing: 0.08em;
 			text-transform: uppercase;
-			padding: 6px 16px;
-			border-radius: 20px;
-			border: 1px solid var(--tag-border);
+			padding: 7px 12px;
+			border-radius: 5px;
+			border: 1px solid transparent;
 			background: transparent;
-			color: var(--muted);
+			color: rgba(255,255,255,0.4);
 			cursor: pointer;
 			white-space: nowrap;
 			transition: background 0.2s, color 0.2s, border-color 0.2s;
-			text-decoration: none;
+			text-decoration: none !important;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		.nav-tab::before {
+			content: '';
+			width: 4px;
+			height: 4px;
+			border-radius: 50%;
+			background: currentColor;
+			opacity: 0.4;
+			transition: opacity 0.2s, background 0.2s;
+			flex-shrink: 0;
 		}
 		.nav-tab:hover {
-			background: var(--tag-bg);
-			border-color: var(--muted);
-			color: inherit !important;
-			text-decoration: none;
+			background: rgba(255,255,255,0.05);
+			color: rgba(255,255,255,0.75) !important;
+			text-decoration: none !important;
 		}
+		.nav-tab:hover::before { opacity: 0.6; }
 		.nav-tab.active {
 			background: var(--accent-dim);
 			border-color: var(--accent-border);
 			color: var(--accent) !important;
-			text-decoration: none;
+			text-decoration: none !important;
+		}
+		.nav-tab.active::before {
+			background: var(--accent);
+			opacity: 1;
+		}
+		/* On mobile the header collapses, so show tabs horizontally */
+		@media screen and (max-width: 980px) {
+			#nav-tabs {
+				flex-direction: row;
+				flex-wrap: wrap;
+				gap: 6px;
+				margin-top: 0.8rem;
+			}
+			.nav-tab { color: rgba(255,255,255,0.55); }
 		}
 
 		/* ── Reveal ───────────────────────────────────────────── */
@@ -152,12 +176,18 @@
 		#skills h2 { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 0; }
 		.skills-grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+			grid-template-columns: repeat(3, 1fr);
 			gap: 1px;
 			border: 1px solid var(--divider);
 			border-radius: 10px;
 			overflow: hidden;
 			margin-bottom: 2.5rem;
+		}
+		@media screen and (max-width: 768px) {
+			.skills-grid { grid-template-columns: repeat(2, 1fr); }
+		}
+		@media screen and (max-width: 480px) {
+			.skills-grid { grid-template-columns: 1fr; }
 		}
 		.skill-group { background: var(--card-bg); padding: 1.1rem 1.3rem; transition: background 0.2s; }
 		.skill-group:hover { background: rgba(79,156,249,0.04); }
@@ -229,18 +259,16 @@
 			<h1><strong>Bruce Baldomero</strong>
 				<br><span class="job-title">Technical Operations & QA Specialist</span>
 			</h1>
+			<nav id="nav-tabs" aria-label="Page sections">
+				<a href="#one"     class="nav-tab active">About</a>
+				<a href="#skills"  class="nav-tab">Skills</a>
+				<a href="#two"     class="nav-tab">Projects</a>
+				<a href="#three"   class="nav-tab">Contact</a>
+			</nav>
 		</div>
 	</header>
 
 	<div id="main">
-
-		<!-- Nav tabs -->
-		<nav id="nav-tabs" aria-label="Page sections">
-			<a href="#one"     class="nav-tab active">About</a>
-			<a href="#skills"  class="nav-tab">Skills</a>
-			<a href="#two"     class="nav-tab">Projects</a>
-			<a href="#three"   class="nav-tab">Contact</a>
-		</nav>
 
 		<!-- About -->
 		<section id="one">
