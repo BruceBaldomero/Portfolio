@@ -146,54 +146,129 @@
 		#nav-tabs { display: none; }
 	}
 
-	/* ── Mobile bottom nav ────────────────────────────────── */
-	#mobile-nav {
+	/* ── Mobile burger menu ──────────────────────────────── */
+	#burger-btn {
+		display: none;
+	}
+	#burger-menu {
 		display: none;
 	}
 	@media screen and (max-width: 980px) {
-		#mobile-nav {
-			display: flex;
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			z-index: 1000;
-			background: rgba(18, 18, 22, 0.92);
-			backdrop-filter: blur(12px);
-			-webkit-backdrop-filter: blur(12px);
-			border-top: 1px solid var(--divider);
-			padding: 6px 0 max(6px, env(safe-area-inset-bottom));
-		}
-		body.light-mode #mobile-nav {
-			background: rgba(245, 245, 247, 0.92);
-		}
-		.mobile-nav-tab {
-			flex: 1;
+		#burger-btn {
 			display: flex;
 			flex-direction: column;
+			justify-content: center;
 			align-items: center;
-			gap: 3px;
-			padding: 6px 4px;
+			gap: 5px;
+			position: fixed;
+			top: 16px;
+			right: 16px;
+			z-index: 1100;
+			width: 44px;
+			height: 44px;
+			background: rgba(18, 18, 22, 0.88);
+			backdrop-filter: blur(12px);
+			-webkit-backdrop-filter: blur(12px);
+			border: 1px solid rgba(255,255,255,0.14);
+			border-radius: 10px;
+			cursor: pointer;
+			padding: 0;
+			transition: background 0.2s, border-color 0.2s;
+		}
+		body.light-mode #burger-btn {
+			background: rgba(245, 245, 247, 0.92);
+			border-color: rgba(0,0,0,0.1);
+		}
+		.burger-bar {
+			width: 20px;
+			height: 2px;
+			background: rgba(255,255,255,0.8);
+			border-radius: 2px;
+			transition: transform 0.25s, opacity 0.25s;
+			display: block;
+		}
+		body.light-mode .burger-bar {
+			background: rgba(30,30,30,0.75);
+		}
+		#burger-btn.open .burger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+		#burger-btn.open .burger-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+		#burger-btn.open .burger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+		#burger-menu {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			position: fixed;
+			top: 68px;
+			right: 16px;
+			z-index: 1050;
+			background: rgba(18, 18, 22, 0.96);
+			backdrop-filter: blur(16px);
+			-webkit-backdrop-filter: blur(16px);
+			border: 1px solid rgba(255,255,255,0.12);
+			border-radius: 12px;
+			padding: 8px;
+			min-width: 180px;
+			opacity: 0;
+			transform: scale(0.92) translateY(-8px);
+			transform-origin: top right;
+			pointer-events: none;
+			transition: opacity 0.2s, transform 0.2s;
+		}
+		body.light-mode #burger-menu {
+			background: rgba(245, 245, 247, 0.97);
+			border-color: rgba(0,0,0,0.1);
+		}
+		#burger-menu.open {
+			opacity: 1;
+			transform: scale(1) translateY(0);
+			pointer-events: auto;
+		}
+		.burger-nav-tab {
 			font-family: 'DM Mono', monospace;
-			font-size: 0.58rem;
-			letter-spacing: 0.06em;
+			font-size: 0.72rem;
+			letter-spacing: 0.08em;
 			text-transform: uppercase;
-			color: var(--muted);
+			padding: 9px 12px;
+			border-radius: 8px;
+			border: 1px solid transparent;
+			background: transparent;
+			color: rgba(255,255,255,0.65);
+			cursor: pointer;
 			text-decoration: none !important;
-			transition: color 0.2s;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			transition: background 0.15s, color 0.15s, border-color 0.15s;
 		}
-		.mobile-nav-tab i {
-			font-size: 1rem;
+		body.light-mode .burger-nav-tab {
+			color: rgba(30,30,30,0.65);
 		}
-		.mobile-nav-tab.active,
-		.mobile-nav-tab:hover {
+		.burger-nav-tab i {
+			width: 16px;
+			text-align: center;
+			font-size: 0.82rem;
+			opacity: 0.7;
+			flex-shrink: 0;
+		}
+		.burger-nav-tab:hover {
+			background: rgba(255,255,255,0.08);
+			border-color: rgba(255,255,255,0.12);
+			color: rgba(255,255,255,1) !important;
+			text-decoration: none !important;
+		}
+		body.light-mode .burger-nav-tab:hover {
+			background: rgba(0,0,0,0.06);
+			border-color: rgba(0,0,0,0.08);
+			color: rgba(30,30,30,1) !important;
+		}
+		.burger-nav-tab.active {
+			background: var(--accent-dim);
+			border-color: var(--accent-border);
 			color: var(--accent) !important;
 			text-decoration: none !important;
 		}
-		/* Pad the page so content isn't hidden behind the bar */
-		#main, #footer {
-			padding-bottom: 64px;
-		}
+		.burger-nav-tab.active i { opacity: 1; }
 	}
 
 	/* ── Reveal ───────────────────────────────────────────── */
