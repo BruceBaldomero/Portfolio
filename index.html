@@ -451,6 +451,11 @@
 		<a href="#skills" class="burger-nav-tab"><i class="fas fa-code"></i><span>Skills</span></a>
 		<a href="#two"    class="burger-nav-tab"><i class="fas fa-folder"></i><span>Projects</span></a>
 		<a href="#three"  class="burger-nav-tab"><i class="fas fa-envelope"></i><span>Contact</span></a>
+		<div class="burger-menu-divider"></div>
+		<button id="burger-theme-toggle" class="burger-nav-tab burger-theme-btn" aria-label="Toggle theme">
+			<i id="burger-theme-icon" class="fas fa-sun"></i>
+			<span id="burger-theme-label">Light Mode</span>
+		</button>
 	</nav>
 
 	<!-- Footer -->
@@ -488,17 +493,26 @@
 		const body = document.body;
 		const sunIcon = themeToggle.querySelector('.fa-sun');
 		const moonIcon = themeToggle.querySelector('.fa-moon');
+		const burgerThemeToggle = document.getElementById('burger-theme-toggle');
+		const burgerThemeIcon = document.getElementById('burger-theme-icon');
+		const burgerThemeLabel = document.getElementById('burger-theme-label');
 		const savedTheme = localStorage.getItem('theme') || 'dark-mode';
 		body.classList.add(savedTheme);
-		sunIcon.style.display  = savedTheme === 'light-mode' ? 'none' : 'inline-block';
-		moonIcon.style.display = savedTheme === 'light-mode' ? 'inline-block' : 'none';
-		themeToggle.addEventListener('click', () => {
+		function updateThemeUI(isDark) {
+			sunIcon.style.display  = isDark ? 'inline-block' : 'none';
+			moonIcon.style.display = isDark ? 'none' : 'inline-block';
+			burgerThemeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+			burgerThemeLabel.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+		}
+		function toggleTheme() {
 			const isDark = body.classList.contains('dark-mode');
 			body.classList.replace(isDark ? 'dark-mode' : 'light-mode', isDark ? 'light-mode' : 'dark-mode');
 			localStorage.setItem('theme', isDark ? 'light-mode' : 'dark-mode');
-			sunIcon.style.display  = isDark ? 'none' : 'inline-block';
-			moonIcon.style.display = isDark ? 'inline-block' : 'none';
-		});
+			updateThemeUI(!isDark);
+		}
+		updateThemeUI(savedTheme === 'dark-mode');
+		themeToggle.addEventListener('click', toggleTheme);
+		burgerThemeToggle.addEventListener('click', () => { toggleTheme(); closeBurger(); });
 
 		/* ── Scroll reveal ── */
 		const revealObserver = new IntersectionObserver((entries) => {
