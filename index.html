@@ -440,12 +440,17 @@
 
 	</div>
 
-	<!-- Mobile bottom nav -->
-	<nav id="mobile-nav" aria-label="Mobile navigation">
-		<a href="#one"   class="mobile-nav-tab active"><i class="fas fa-user"></i><span>About</span></a>
-		<a href="#skills" class="mobile-nav-tab"><i class="fas fa-code"></i><span>Skills</span></a>
-		<a href="#two"   class="mobile-nav-tab"><i class="fas fa-folder"></i><span>Projects</span></a>
-		<a href="#three" class="mobile-nav-tab"><i class="fas fa-envelope"></i><span>Contact</span></a>
+	<!-- Mobile burger menu -->
+	<button id="burger-btn" aria-label="Open navigation menu" aria-expanded="false">
+		<span class="burger-bar"></span>
+		<span class="burger-bar"></span>
+		<span class="burger-bar"></span>
+	</button>
+	<nav id="burger-menu" aria-label="Mobile navigation" aria-hidden="true">
+		<a href="#one"    class="burger-nav-tab active"><i class="fas fa-user"></i><span>About</span></a>
+		<a href="#skills" class="burger-nav-tab"><i class="fas fa-code"></i><span>Skills</span></a>
+		<a href="#two"    class="burger-nav-tab"><i class="fas fa-folder"></i><span>Projects</span></a>
+		<a href="#three"  class="burger-nav-tab"><i class="fas fa-envelope"></i><span>Contact</span></a>
 	</nav>
 
 	<!-- Footer -->
@@ -504,27 +509,51 @@
 		/* ── Nav tab active state on scroll ── */
 		const sections = ['one','skills','two','three'];
 		const tabs = document.querySelectorAll('.nav-tab');
-		const mobileTabs = document.querySelectorAll('.mobile-nav-tab');
+		const burgerTabs = document.querySelectorAll('.burger-nav-tab');
 		const sectionEls = sections.map(id => document.getElementById(id));
 		const navObserver = new IntersectionObserver((entries) => {
 			entries.forEach(e => {
 				if (e.isIntersecting) {
 					tabs.forEach(t => t.classList.remove('active'));
-					mobileTabs.forEach(t => t.classList.remove('active'));
+					burgerTabs.forEach(t => t.classList.remove('active'));
 					const match = document.querySelector(`.nav-tab[href="#${e.target.id}"]`);
 					if (match) match.classList.add('active');
-					const mobileMatch = document.querySelector(`.mobile-nav-tab[href="#${e.target.id}"]`);
-					if (mobileMatch) mobileMatch.classList.add('active');
+					const burgerMatch = document.querySelector(`.burger-nav-tab[href="#${e.target.id}"]`);
+					if (burgerMatch) burgerMatch.classList.add('active');
 				}
 			});
 		}, { threshold: 0.25 });
 		sectionEls.forEach(el => { if (el) navObserver.observe(el); });
 
+		/* ── Burger menu toggle ── */
+		const burgerBtn = document.getElementById('burger-btn');
+		const burgerMenu = document.getElementById('burger-menu');
+		function closeBurger() {
+			burgerBtn.classList.remove('open');
+			burgerMenu.classList.remove('open');
+			burgerBtn.setAttribute('aria-expanded', 'false');
+			burgerMenu.setAttribute('aria-hidden', 'true');
+		}
+		burgerBtn.addEventListener('click', e => {
+			e.stopPropagation();
+			const isOpen = burgerMenu.classList.contains('open');
+			if (isOpen) { closeBurger(); } else {
+				burgerBtn.classList.add('open');
+				burgerMenu.classList.add('open');
+				burgerBtn.setAttribute('aria-expanded', 'true');
+				burgerMenu.setAttribute('aria-hidden', 'false');
+			}
+		});
+		document.addEventListener('click', e => {
+			if (!burgerMenu.contains(e.target)) closeBurger();
+		});
+
 		/* ── Smooth scroll for tabs ── */
-		const allTabs = document.querySelectorAll('.nav-tab, .mobile-nav-tab');
+		const allTabs = document.querySelectorAll('.nav-tab, .burger-nav-tab');
 		allTabs.forEach(tab => {
 			tab.addEventListener('click', e => {
 				e.preventDefault();
+				closeBurger();
 				const target = document.querySelector(tab.getAttribute('href'));
 				if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 			});
