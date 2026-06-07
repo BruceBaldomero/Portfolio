@@ -11,6 +11,7 @@
 		white-space: normal !important;
 		word-break: break-word;
 		line-height: 1.4;
+		display: block;
 	}
 
 	/* At 1280px the header shrinks to 30% — make sure nav tabs still fit */
