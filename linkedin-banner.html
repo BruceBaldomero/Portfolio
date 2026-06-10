@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1584px;
+    height: 396px;
+    overflow: hidden;
+    background: #12121a;
+  }
+
+  .banner {
+    width: 1584px;
+    height: 396px;
+    background: #12121a;
+    position: relative;
+    overflow: hidden;
+    font-family: 'DM Mono', 'Courier New', monospace;
+  }
+
+  /* ── Background layers ── */
+  .bg-glow-left {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    top: -200px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(79,156,249,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .bg-glow-right {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    top: -250px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(79,156,249,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  /* Subtle dot grid */
+  .dot-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  /* Diagonal accent line top-right */
+  .accent-line-tr {
+    position: absolute;
+    top: 0;
+    right: 180px;
+    width: 1px;
+    height: 140px;
+    background: linear-gradient(to bottom, transparent, rgba(79,156,249,0.35), transparent);
+  }
+  .accent-line-tr2 {
+    position: absolute;
+    top: 0;
+    right: 220px;
+    width: 1px;
+    height: 90px;
+    background: linear-gradient(to bottom, transparent, rgba(79,156,249,0.18), transparent);
+  }
+
+  /* ── Left accent bar ── */
+  .left-bar {
+    position: absolute;
+    left: 72px;
+    top: 88px;
+    width: 2px;
+    height: 210px;
+    background: linear-gradient(to bottom, transparent, #4f9cf9, transparent);
+    border-radius: 2px;
+  }
+
+  /* ── Main content ── */
+  .content {
+    position: absolute;
+    left: 96px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(79,156,249,0.7);
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-size: 58px;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .title-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4f9cf9;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(79,156,249,0.6);
+  }
+
+  .title {
+    font-size: 17px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #4f9cf9;
+    font-weight: 400;
+  }
+
+  .meta {
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    padding-left: 16px;
+  }
+
+  .url {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.22);
+    padding-left: 16px;
+  }
+
+  /* ── Right tags panel ── */
+  .tags-panel {
+    position: absolute;
+    right: 90px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .tags-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(79,156,249,0.22);
+    background: rgba(79,156,249,0.07);
+    color: rgba(255,255,255,0.6);
+    white-space: nowrap;
+  }
+
+  .tag.accent {
+    border-color: rgba(79,156,249,0.4);
+    background: rgba(79,156,249,0.12);
+    color: rgba(79,156,249,0.9);
+  }
+
+  .tag.dim {
+    border-color: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ── Horizontal rule ── */
+  .h-rule {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(79,156,249,0.25) 30%, rgba(79,156,249,0.25) 70%, transparent);
+  }
+</style>
+</head>
+<body>
+<div class="banner">
+
+  <!-- Background effects -->
+  <div class="bg-glow-left"></div>
+  <div class="bg-glow-right"></div>
+  <div class="dot-grid"></div>
+  <div class="accent-line-tr"></div>
+  <div class="accent-line-tr2"></div>
+
+  <!-- Left accent bar -->
+  <div class="left-bar"></div>
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="eyebrow">London, UK</div>
+    <div class="name">Bruce Baldomero</div>
+    <div class="title-row">
+      <div class="title-dot"></div>
+      <div class="title">Technical Operations &amp; QA Specialist</div>
+    </div>
+    <div class="meta">Adaro Optics &nbsp;·&nbsp; Vision Express · David Clulow · Boots · Specsavers</div>
+    <div class="url">brucebaldomero.com</div>
+  </div>
+
+  <!-- Tags on the right -->
+  <div class="tags-panel">
+    <div class="tags-row">
+      <div class="tag dim">Confluence</div>
+      <div class="tag dim">Jira</div>
+      <div class="tag accent">Playwright</div>
+    </div>
+    <div class="tags-row">
+      <div class="tag dim">UAT · Regression</div>
+      <div class="tag accent">SQL · T-SQL</div>
+    </div>
+    <div class="tags-row">
+      <div class="tag dim">Technical Ops</div>
+      <div class="tag dim">SLA Management</div>
+      <div class="tag accent">QA Automation</div>
+    </div>
+    <div class="tags-row">
+      <div class="tag dim">Freshdesk</div>
+      <div class="tag dim">Freelance Web</div>
+    </div>
+  </div>
+
+  <!-- Bottom rule -->
+  <div class="h-rule"></div>
+
+</div>
+</body>
+</html>
