@@ -455,6 +455,19 @@
 	.image.avatar:hover { border-color: var(--accent); }
 	#theme-toggle { border-radius: 8px; transition: background 0.2s, transform 0.15s; }
 	#theme-toggle:hover { transform: scale(1.05); }
+
+	/* ── Lightbox caption ─────────────────────────────────── */
+	.poptrox-popup .caption {
+		background: rgba(12, 12, 18, 0.93);
+		color: rgba(255,255,255,0.78);
+		height: auto;
+		line-height: 1.6;
+		padding: 12px 24px;
+		font-size: 0.82rem;
+		text-align: center;
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+	}
 	
 	/* ── Contact ──────────────────────────────────────────────── */
 	.contact-layout {
