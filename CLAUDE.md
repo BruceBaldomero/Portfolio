@@ -4,17 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Static personal portfolio site for Bruce Baldomero (brucebaldomero.com). Hand-built (the original Strata template is no longer loaded). No build step — files are served as-is via GitHub Pages.
+Static personal portfolio site for Bruce Baldomero (brucebaldomero.com). Built on the Strata template by HTML5 UP (CCA 3.0), heavily customised with 600+ lines of additional CSS. No build step — files are served as-is via GitHub Pages.
 
-**Stack:** HTML5 · one stylesheet with CSS custom properties · vanilla JS (no jQuery) · Chivo (Google Fonts) · inline SVG icons · Formspree (contact form)
-
-**Design direction — "the name as a monument":** the surname BALDOMERO is set as display type across the first screen and the O is a lens holding the portrait (a nod to the optical-retail work). On phones the word turns a quarter and runs down the right side. One family (Chivo 400/700/900), one ground, one ink, one gold accent; square corners; no monospace except real code; no eyebrow labels, gradients or resting shadows.
+**Stack:** HTML5 · CSS3 (custom properties) · Vanilla JS + jQuery · Font Awesome 6 · DM Sans / DM Mono (Google Fonts) · Formspree (contact form)
 
 ## No Build Process
 
-There are no npm packages, no bundler, no compilation step. Open `index.html` directly in a browser (or serve the folder) to develop.
-
-Legacy template files (`assets/css/main.css`, `assets/sass/`, `assets/js/*`, `assets/webfonts/`, `images/fulls/*.gif`, `images/thumbs/`, `images/bcg*.jpg`) are no longer referenced by `index.html`. They are kept for now and are safe to delete.
+There are no npm packages, no bundler, no compilation step. Open `index.html` directly in a browser to develop. The SASS files in `assets/sass/` are source references for the base template only — they are **not compiled on deploy**. `assets/css/main.css` is already the compiled output and is committed to git.
 
 ## Deployment
 
@@ -22,62 +18,72 @@ GitHub Pages serves from `main` branch root. `CNAME` sets the custom domain to `
 
 **Always ask the user before merging anything to `main`.**
 
-## CSS (`assets/css/site.css`)
+## CSS Architecture
 
-The only stylesheet. Sections are labelled with comment banners in page order.
+Two CSS files load in order:
 
-### Design Tokens (`:root`)
+1. **`assets/css/main.css`** — Compiled base template. Do not edit directly. Contains breakpoint system, layout, and the dark/light theme toggle button.
+2. **`assets/css/custom.css`** — All custom work goes here. Loads last so it overrides the base.
+
+### Design Tokens (defined in `custom.css` `:root`)
 
 ```css
---bg: #0c0a08;        /* warm near-black ground (dark, default) */
---surface: #181512;   /* one tone step up: panels, fields */
---surface-2: #221e1a;
---ink: #ffffff;
---muted: #a19b94;     /* secondary text, ≥4.5:1 on --bg */
---accent: #c9a45a;    /* gold: primary button, active states, footer links */
---inv-*               /* the contact section inverts the page colours */
---step-small / --step-body / --step-lead / --step-head  /* the four text sizes; display type is fitted by JS */
---ease-out / --ease-expo / --ease-in-out, --t-press / --t-hover / --t-ui
+--accent: #4f9cf9;               /* Blue — primary highlight colour */
+--accent-dim: rgba(79,156,249,0.10);
+--accent-border: rgba(79,156,249,0.30);
+--card-bg: rgba(255,255,255,0.03);
+--card-border: rgba(255,255,255,0.08);
+--muted: rgba(255,255,255,0.45);
+--divider: rgba(255,255,255,0.07);
+--ease: cubic-bezier(0.4,0,0.2,1);
 ```
 
-Light mode is `:root[data-theme="light"]` (warm off-white `#f2f2f0`, darker gold `#7a5a1c`). The `data-theme` attribute is set by an inline script in `<head>` before first paint to avoid a flash.
+Background is `#12121a` (dark mode default). Light mode overrides these variables via `body.light-mode { }`.
 
-### Responsive Breakpoints
+### Responsive Breakpoints (custom.css)
 
 | Breakpoint | What changes |
 |---|---|
-| `max-width: 900px` | Header links + theme icon hidden, "Menu" button shown; about/skills/contact collapse to one column; projects become picture-then-name cards (2 per row from 641px) |
-| `641px–900px` | Taller hero so the name clears the intro |
-| `max-width: 760px` | Experience rows stack (title, then company + dates) |
-| `max-width: 640px` | Hero name runs vertically down the right side; single-column everything; contact email breaks after the @ |
+| `max-width: 1280px` | Nav tabs shrink |
+| `max-width: 1100px` | About/skills/contact collapse to single column |
+| `max-width: 980px` | Desktop nav tabs hidden; burger menu button visible |
+| `max-width: 736px` | Timeline stacks; projects go single column |
+| `max-width: 480px` | Skills grid single column; further text scaling |
 
 ## HTML Structure (`index.html`)
 
-```
-header.bar#bar        — Sticky bar: name, section links, #theme-toggle; #burger-btn ("Menu") + #burger-menu on ≤900px
-main
-  section.hero#top    — Lead sentence + CTA, facts (based in / currently / open to), h1.monument (fitted wordmark with .lens portrait)
-  section.about       — "Hi, I'm Bruce." statement + paragraphs, track record + certifications lists
-  section.lineup#experience — Roles as a one-size table (title / company / dates) with notes; Education part
-  section.work        — Project index (big names) + sticky preview frame (desktop); each .work__item holds a <template> with description, tags and links
-  section.skills      — Four modules: panel (live check runner / T-SQL sample / charge-run checklist / screenshot) + skill list
-  section.contact     — Inverse colour field: heading, Formspree form, email as display type, links
-footer.footer         — Fitted full-name wordmark, links, copyright + back to top
-dialog#project-dialog — Project preview (video loop or still, description, tags, links)
-```
+Single page, four scroll sections:
 
-Project media lives in `images/work/` — a still `.jpg` per project, plus an `.mp4` loop for the ones that had GIF recordings (converted with ffmpeg; ~9 MB total instead of ~125 MB of GIFs).
+```
+#header          — Avatar, name, job title, desktop #nav-tabs (hidden <980px)
+#main
+  #one           — About (2-col: text + stats/certs)
+  #skills        — Skills grid (6 cards) + Timeline (experience) + Education
+  #two           — Projects (thumbnail grid with poptrox lightbox)
+  #three         — Contact (2-col: quick links + Formspree form)
+#burger-btn      — Hamburger button, fixed top-right, visible <980px only
+#burger-menu     — Dropdown nav (4 links + theme toggle), opens from burger-btn
+#footer          — Social icons + copyright
+#theme-toggle    — Floating circular dark/light button, hidden on mobile
+```
 
 ## Inline JavaScript (bottom of `index.html`)
 
-- **Theme toggle** — `toggleTheme()` flips `data-theme` on `<html>` and stores `localStorage('theme')` as `dark-mode`/`light-mode` (same values as before). `updateThemeUI()` syncs `#theme-toggle`'s label, `#burger-theme-toggle`'s text and the `theme-color` meta.
-- **Fit** — `fitAll()` sizes the hero monument (to the width, or to the hero height when vertical on phones) and the footer wordmark; re-runs on resize and after fonts load.
-- **Scroll reveal** — `IntersectionObserver` adds `.is-in` to `[data-reveal]` once. Hidden states only apply under `html.js` and `prefers-reduced-motion: no-preference`, so content is never stuck hidden.
-- **Nav active state** — `IntersectionObserver` sets `aria-current` on the matching `.nav-link` (desktop and menu).
-- **Mobile menu** — `openBurger()` / `closeBurger()`; closes on outside click, Escape, or a link tap.
-- **Projects** — hover/focus a row to set the active project (frame image swaps; desktop plays the project's `.mp4` if it has one). Clicking a row opens `#project-dialog` with the row's `<template>` content. Without JS, rows are plain links to the live site/code/thesis.
-- **Check runner** — `#run-checks` runs eight real checks against the page (one h1, alt text, link targets, noopener, labelled fields, overflow, body contrast, load time) and reports results.
-- **Contact form** — submits to Formspree with `fetch` and shows the result inline; without JS it posts normally.
+All JS logic lives in a single `<script>` block at the bottom of `index.html`:
+
+- **Theme toggle** — Reads/writes `localStorage('theme')`, applies `dark-mode`/`light-mode` class to `body`. Updates both the floating `#theme-toggle` button and the `#burger-theme-toggle` inside the burger menu simultaneously via `updateThemeUI()`.
+- **Scroll reveal** — `IntersectionObserver` adds `.visible` to `.reveal` elements as they enter the viewport.
+- **Nav active state** — Second `IntersectionObserver` tracks which section is in view and syncs `.active` class on both `.nav-tab` (desktop) and `.burger-nav-tab` (mobile) elements.
+- **Burger menu** — Toggle `.open` on `#burger-btn` and `#burger-menu`; close on outside click or nav link click. `closeBurger()` is a named function (hoisted) so it's callable from the theme toggle handler above it.
+- **Smooth scroll** — Intercepts clicks on all nav tabs and scrolls to the target section.
+
+## Mobile Navigation
+
+The burger menu (`#burger-btn` + `#burger-menu`) replaces both the sidebar nav and the floating theme toggle on mobile:
+
+- `#theme-toggle` is hidden via `display: none` inside the `max-width: 980px` media query in `custom.css`
+- The theme toggle is duplicated as `#burger-theme-toggle` (a `<button>` inside `#burger-menu`)
+- The burger menu dropdown is a compact card anchored top-right — not full-screen
 
 ## Git Workflow
 
