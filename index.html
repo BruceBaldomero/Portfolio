@@ -5,7 +5,7 @@
 <head>
 	<title>Bruce Baldomero — Technical Operations & QA Specialist</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="Bruce Baldomero — Technical Operations & QA Specialist based in London. SQL, QA testing, Playwright automation, system support." />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="icon" type="image/png" sizes="32x32" href="images/icon4.png">
@@ -586,7 +586,7 @@
 				e.preventDefault();
 				closeBurger();
 				const target = document.querySelector(tab.getAttribute('href'));
-				if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				if (target) target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
 			});
 		});
 	</script>

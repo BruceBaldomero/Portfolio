@@ -28,17 +28,19 @@ Two CSS files load in order:
 ### Design Tokens (defined in `custom.css` `:root`)
 
 ```css
---accent: #4f9cf9;               /* Blue — primary highlight colour */
---accent-dim: rgba(79,156,249,0.10);
---accent-border: rgba(79,156,249,0.30);
---card-bg: rgba(255,255,255,0.03);
---card-border: rgba(255,255,255,0.08);
---muted: rgba(255,255,255,0.45);
---divider: rgba(255,255,255,0.07);
---ease: cubic-bezier(0.4,0,0.2,1);
+--accent: #4f9cf9;               /* Blue — primary highlight colour (light mode: #1a5fb4 for contrast) */
+--accent-dim / --accent-border / --accent-hover
+--card-bg / --card-border / --tag-bg / --tag-border / --divider
+--text-soft: rgba(255,255,255,0.80);  /* secondary running text */
+--muted: rgba(255,255,255,0.60);      /* meta: dates, labels, captions (≥4.5:1) */
+--fs-label 13px · --fs-small 14px · --fs-body 16px · --fs-text 17px · --fs-lead 18px · --fs-h2 32px
+--ease: cubic-bezier(0.22,1,0.36,1); --t-press: 140ms; --t-hover: 180ms;
+--link-color: var(--accent);     /* overrides the template's yellow #ffb300 (links + theme toggle) */
 ```
 
-Background is `#12121a` (dark mode default). Light mode overrides these variables via `body.light-mode { }`.
+Use these tokens instead of opacity on text: faded text (opacity 0.45–0.6) was the main readability problem. Hover styles sit inside `@media (hover: hover) and (pointer: fine)`; pressable elements get a small `scale()` on `:active`. Responsive overrides live in one block near the end of `custom.css`, after the base rules, so source order doesn't undo them.
+
+Background is `#242424` (dark mode default, from `main.css`). Light mode overrides these variables via `body.light-mode { }`.
 
 ### Responsive Breakpoints (custom.css)
 
