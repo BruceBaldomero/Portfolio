@@ -8,16 +8,15 @@ Live at [brucebaldomero.com](https://brucebaldomero.com)
 
 ## Features
 
-- Dark / light mode toggle with `localStorage` persistence (defaults to dark)
-- Sticky sidebar navigation with active-section tracking on scroll
-- Scroll reveal animations throughout
-- Two-column About layout with stats and certifications panel
-- Skills grid across 6 categories
-- Full experience timeline with dates
-- Project gallery with tech stack tags and lightbox preview
-- Redesigned contact section with quick-links and message form
-- Fully responsive — mobile, tablet, desktop
-- Google Fonts: DM Sans + DM Mono
+- Display-type hero: the surname set across the screen, with the portrait inside the "O" like a lens (vertical on phones)
+- Dark / light mode with `localStorage` persistence (defaults to dark), applied before first paint
+- Sticky header with active-section tracking; compact "Menu" dropdown on tablets and phones
+- Experience as a one-size table, education below it
+- Project index with a sticky preview frame that plays each project's recording, and a preview dialog with links
+- Skills shown beside small proofs, including a live check runner that tests the page in your browser
+- Contact section with an inline-submitting Formspree form
+- Motion with full `prefers-reduced-motion` and no-JavaScript fallbacks
+- Single typeface: Chivo (Google Fonts)
 
 ## Projects
 
