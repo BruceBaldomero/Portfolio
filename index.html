@@ -41,8 +41,10 @@
 			<h1><strong>Bruce Baldomero</strong>
 				<br><span class="job-title">Technical Operations & QA Specialist</span>
 			</h1>
+			<p class="header-pitch">I keep the software behind UK opticians running, tested and documented.</p>
 			<nav id="nav-tabs" aria-label="Page sections">
 				<a href="#one"     class="nav-tab active">About</a>
+				<a href="#work"    class="nav-tab">Selected Work</a>
 				<a href="#skills"  class="nav-tab">Skills</a>
 				<a href="#two"     class="nav-tab">Projects</a>
 				<a href="#three"   class="nav-tab">Contact</a>
@@ -97,6 +99,89 @@
 						</ul>
 					</div>
 				</div>
+			</div>
+		</section>
+
+		<!-- Selected work: case studies from the day job -->
+		<section id="work">
+			<header class="reveal">
+				<h2>Selected Work</h2>
+				<div class="section-divider"></div>
+			</header>
+			<p class="section-intro reveal reveal-delay-1">What I build and run at Adaro Optics. Client systems and data stay private, so these are summaries rather than screenshots.</p>
+
+			<div class="case-grid">
+				<article class="case case--wide reveal reveal-delay-1">
+					<span class="case-label">QA automation</span>
+					<h3>Regression coverage with Playwright</h3>
+					<dl class="case-steps">
+						<div><dt>The problem</dt><dd>The software runs day to day for Vision Express, Boots, Specsavers and independent practices, so a release that breaks a workflow reaches every branch at once.</dd></div>
+						<div><dt>What I did</dt><dd>Introduced QA processes covering UAT and regression testing, and built automated Playwright test suites in TypeScript.</dd></div>
+						<div><dt>The result</dt><dd>Repeatable regression checks before releases, with the process written up in Confluence so the team can run and extend it.</dd></div>
+					</dl>
+					<div class="tech-tags">
+						<span class="tech-tag">Playwright</span>
+						<span class="tech-tag">TypeScript</span>
+						<span class="tech-tag">UAT</span>
+						<span class="tech-tag">Regression</span>
+						<span class="tech-tag">Confluence</span>
+					</div>
+				</article>
+
+				<article class="case reveal reveal-delay-2">
+					<span class="case-label">Data &amp; reporting</span>
+					<h3>Finance reporting in SQL</h3>
+					<dl class="case-steps">
+						<div><dt>The problem</dt><dd>Finance needed regular reports on letters before action, payment plans and write-offs, on top of direct debit checks and collection runs.</dd></div>
+						<div><dt>What I did</dt><dd>Wrote SQL scripts that automate the operational tasks and generate the reports, and monitored charge runs.</dd></div>
+					</dl>
+					<div class="tech-tags">
+						<span class="tech-tag">T-SQL</span>
+						<span class="tech-tag">SQL Server</span>
+						<span class="tech-tag">SSMS</span>
+						<span class="tech-tag">Stripe</span>
+						<span class="tech-tag">Smart Debit</span>
+					</div>
+				</article>
+
+				<article class="case reveal reveal-delay-3">
+					<span class="case-label">Operations</span>
+					<h3>Support that scales</h3>
+					<dl class="case-steps">
+						<div><dt>The problem</dt><dd>High-volume support queues with SLA targets, and know-how that lived in people’s heads.</dd></div>
+						<div><dt>What I did</dt><dd>Ran SLA-aligned incident management in Freshdesk, linked Operations, Development and vendors, and set the documentation strategy in Confluence.</dd></div>
+						<div><dt>The result</dt><dd>Reusable references that reduce onboarding time.</dd></div>
+					</dl>
+					<div class="tech-tags">
+						<span class="tech-tag">Freshdesk</span>
+						<span class="tech-tag">Confluence</span>
+						<span class="tech-tag">Jira</span>
+						<span class="tech-tag">SLA</span>
+					</div>
+				</article>
+
+				<article class="case case--wide case--check reveal reveal-delay-1">
+					<div class="check-head">
+						<div>
+							<span class="case-label">Live check</span>
+							<h3>This page, tested</h3>
+							<p class="check-intro">Real QA checks, run in your browser against this page.</p>
+						</div>
+						<button type="button" class="check-run" id="run-checks"><i class="fas fa-play"></i> Run checks</button>
+					</div>
+					<ol class="check-list" id="check-list">
+						<li data-check="h1"><span class="check-dot" aria-hidden="true"></span><span class="check-name">One main heading</span><span class="check-detail">Not run</span></li>
+						<li data-check="alt"><span class="check-dot" aria-hidden="true"></span><span class="check-name">Every image has alt text</span><span class="check-detail">Not run</span></li>
+						<li data-check="links"><span class="check-dot" aria-hidden="true"></span><span class="check-name">Every link has a destination</span><span class="check-detail">Not run</span></li>
+						<li data-check="rel"><span class="check-dot" aria-hidden="true"></span><span class="check-name">New-tab links use noopener</span><span class="check-detail">Not run</span></li>
+						<li data-check="labels"><span class="check-dot" aria-hidden="true"></span><span class="check-name">Form fields are labelled</span><span class="check-detail">Not run</span></li>
+						<li data-check="overflow"><span class="check-dot" aria-hidden="true"></span><span class="check-name">No sideways scroll</span><span class="check-detail">Not run</span></li>
+						<li data-check="contrast"><span class="check-dot" aria-hidden="true"></span><span class="check-name">Body text contrast ≥ 4.5:1</span><span class="check-detail">Not run</span></li>
+						<li data-check="load"><span class="check-dot" aria-hidden="true"></span><span class="check-name">Page ready in under 3s</span><span class="check-detail">Not run</span></li>
+					</ol>
+					<p class="check-summary" id="check-summary" aria-live="polite"></p>
+					<noscript><p class="check-summary">Turn on JavaScript to run these checks.</p></noscript>
+				</article>
 			</div>
 		</section>
 
@@ -172,13 +257,12 @@
 
 				<div class="timeline-item">
 					<div class="timeline-dot"></div>
-					<div class="timeline-header">
-						<span class="timeline-role">Technical Operations & QA Specialist</span>
-						<div class="timeline-meta">
+					<span class="timeline-dates">Apr 2026 – Present</span>
+					<div class="timeline-body">
+						<div class="timeline-header">
+							<span class="timeline-role">Technical Operations & QA Specialist</span>
 							<span class="timeline-company">Adaro Optics</span>
-							<span class="timeline-dates">Apr 2026 – Present</span>
 						</div>
-					</div>
 					<ul>
 						<li>QA processes including UAT, regression testing, and Playwright (TypeScript) automated test suites</li>
 						<li>Technical documentation strategy in Confluence — reusable references that reduce onboarding time</li>
@@ -186,17 +270,26 @@
 						<li>SLA-aligned incident management via Freshdesk across high-volume support queues</li>
 						<li>SQL scripts to automate operational tasks and generate Finance reports (LBAs, payment plans, write-offs)</li>
 					</ul>
+						<div class="tech-tags timeline-tools">
+							<span class="tech-tag">Playwright</span>
+							<span class="tech-tag">TypeScript</span>
+							<span class="tech-tag">SQL</span>
+							<span class="tech-tag">Freshdesk</span>
+							<span class="tech-tag">Confluence</span>
+							<span class="tech-tag">Stripe</span>
+							<span class="tech-tag">Smart Debit</span>
+						</div>
+					</div>
 				</div>
 
 				<div class="timeline-item">
 					<div class="timeline-dot"></div>
-					<div class="timeline-header">
-						<span class="timeline-role">Application Analyst</span>
-						<div class="timeline-meta">
+					<span class="timeline-dates">May 2023 – Mar 2026</span>
+					<div class="timeline-body">
+						<div class="timeline-header">
+							<span class="timeline-role">Application Analyst</span>
 							<span class="timeline-company">Adaro Optics</span>
-							<span class="timeline-dates">May 2023 – Mar 2026</span>
 						</div>
-					</div>
 					<ul>
 						<li>Diagnosed and resolved software issues across instances, servers, databases, SSL certificates, and dashboards</li>
 						<li>Managed onboarding and offboarding — account provisioning, VPN setup, mailbox configuration, asset management</li>
@@ -204,23 +297,38 @@
 						<li>Conducted direct debit checks, collection runs, charge reports, and Finance Department reporting</li>
 						<li>Hardware support for PC workstations, printers, and peripherals; out-of-hours on-call rota</li>
 					</ul>
+						<div class="tech-tags timeline-tools">
+							<span class="tech-tag">SQL Server</span>
+							<span class="tech-tag">SSL</span>
+							<span class="tech-tag">VPN</span>
+							<span class="tech-tag">Dashboards</span>
+							<span class="tech-tag">Finance reporting</span>
+						</div>
+					</div>
 				</div>
 
 				<div class="timeline-item">
 					<div class="timeline-dot dim"></div>
-					<div class="timeline-header">
-						<span class="timeline-role">Software Support Analyst / Trainee Web Implementation</span>
-						<div class="timeline-meta">
+					<span class="timeline-dates">Sep 2022 – Nov 2022</span>
+					<div class="timeline-body">
+						<div class="timeline-header">
+							<span class="timeline-role">Software Support Analyst / Trainee Web Implementation</span>
 							<span class="timeline-company">Calculus Software Solutions</span>
-							<span class="timeline-dates">Sep 2022 – Nov 2022</span>
 						</div>
-					</div>
 					<ul>
 						<li>Remote support for bespoke business management software (NCompass) and eCommerce platforms</li>
 						<li>Resolved sync issues between internal software, branch servers, and websites</li>
 						<li>Updated product data in EPI/PIM systems; front-end changes via CSS/HTML and Magento backend</li>
 						<li>Attended client sites to gather web implementation requirements</li>
 					</ul>
+						<div class="tech-tags timeline-tools">
+							<span class="tech-tag">NCompass</span>
+							<span class="tech-tag">Magento</span>
+							<span class="tech-tag">EPI / PIM</span>
+							<span class="tech-tag">HTML</span>
+							<span class="tech-tag">CSS</span>
+						</div>
+					</div>
 				</div>
 
 			</div>
@@ -249,7 +357,7 @@
 				<h2>Projects</h2>
 				<div class="section-divider"></div>
 			</header>
-			<p class="reveal reveal-delay-1">Click any project to preview it.</p>
+			<p class="section-intro reveal reveal-delay-1">Freelance and personal builds. Click a preview to see it in action.</p>
 			<div class="row">
 
 				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-1">
@@ -287,106 +395,71 @@
 					</div>
 				</article>
 
-				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-2">
-					<a href="images/fulls/solent_inspire_application.gif" class="image fit thumb"><img
-							src="images/thumbs/solent_inspire_app_thumb.jpg" alt="Solent Inspire Mobile Application — React Native and Firebase" loading="lazy" />
+			</div>
+
+			<span class="section-sublabel reveal">Earlier projects · 2020–2022</span>
+			<ul class="work-list reveal reveal-delay-1">
+				<li class="work-item work-row">
+					<a href="images/previews/solent-app.webp" class="image mini"><img src="images/thumbs/solent_inspire_app_thumb.jpg" alt="Solent Inspire Mobile Application — React Native and Firebase" loading="lazy" width="370" height="217" />
 						<p class="description">A cross-platform mobile app built with React Native, Firebase, and Expo — designed to help students share and discover creative projects. Handles real-time data, user auth, and a content feed. Submitted as my final-year thesis.</p>
 					</a>
-					<h3>Solent Inspire Mobile Application <span class="project-year">2022</span></h3>
-					<div class="tech-tags">
-						<span class="tech-tag">React Native</span>
-						<span class="tech-tag">Firebase</span>
-						<span class="tech-tag">Expo</span>
+					<div class="work-row-text">
+						<h4>Solent Inspire Mobile Application <span class="project-year">2022</span></h4>
+						<div class="tech-tags"><span class="tech-tag">React Native</span><span class="tech-tag">Firebase</span><span class="tech-tag">Expo</span></div>
 					</div>
-					<div class="proj-links">
-						<a href="https://github.com/brucebaldomero/creativeapplication" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fab fa-github"></i> Code</a>
-						<a href="https://drive.google.com/file/d/1nGeuxvVltvege6mhWdIp_nWCgdqcSGXf/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fas fa-file"></i> Thesis</a>
-					</div>
-				</article>
-
-				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-1">
-					<a href="images/fulls/solent_inspire_react.gif" class="image fit thumb"><img
-							src="images/thumbs/solent_inspire_react_thumb.jpg" alt="Single Web Application — React and Node.js SPA" loading="lazy" />
+					<div class="proj-links"><a href="https://github.com/brucebaldomero/creativeapplication" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fab fa-github"></i> Code</a><a href="https://drive.google.com/file/d/1nGeuxvVltvege6mhWdIp_nWCgdqcSGXf/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fas fa-file"></i> Thesis</a></div>
+				</li>
+				<li class="work-item work-row">
+					<a href="images/previews/solent-spa.webp" class="image mini"><img src="images/thumbs/solent_inspire_react_thumb.jpg" alt="Single Web Application — React and Node.js SPA" loading="lazy" width="370" height="217" />
 						<p class="description">A React and Node.js SPA where students upload and browse creative projects. Focused on component architecture, state management, and a clean, responsive UI deployed via GitHub Pages.</p>
 					</a>
-					<h3>Single Web Application <span class="project-year">2022</span></h3>
-					<div class="tech-tags">
-						<span class="tech-tag">React</span>
-						<span class="tech-tag">Node.js</span>
-						<span class="tech-tag">SPA</span>
+					<div class="work-row-text">
+						<h4>Single Web Application <span class="project-year">2022</span></h4>
+						<div class="tech-tags"><span class="tech-tag">React</span><span class="tech-tag">Node.js</span><span class="tech-tag">SPA</span></div>
 					</div>
-					<div class="proj-links">
-						<a href="https://github.com/brucebaldomero/creative-single-page-app" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fab fa-github"></i> Code</a>
-						<a href="https://brucebaldomero.github.io/creative-single-page-app/" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-live"><i class="fas fa-globe"></i> Live site</a>
-					</div>
-				</article>
-
-				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-2">
-					<a href="images/fulls/grapevine_clothing.gif" class="image fit thumb"><img
-							src="images/thumbs/grapevine_clothing_thumb.jpg" alt="Grapevine Clothing — e-commerce website" loading="lazy" />
-						<p class="description">An independent e-commerce storefront that started as a Depop shop and grew into a fully responsive website. Built with HTML, CSS, and JavaScript — includes a working shopping cart and product listings.</p>
-					</a>
-					<h3>Grapevine Clothing <span class="project-year">2021</span></h3>
-					<div class="tech-tags">
-						<span class="tech-tag">HTML</span>
-						<span class="tech-tag">CSS</span>
-						<span class="tech-tag">JavaScript</span>
-						<span class="tech-tag">E-commerce</span>
-					</div>
-					<div class="proj-links">
-						<a href="https://github.com/brucebaldomero/grapevine-clothing" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fab fa-github"></i> Code</a>
-						<a href="https://brucebaldomero.github.io/grapevine-clothing/" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-live"><i class="fas fa-globe"></i> Live site</a>
-					</div>
-				</article>
-
-				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-1">
-					<a href="images/fulls/vegan_clothing_.gif" class="image fit thumb"><img
-							src="images/thumbs/vegan_clothing_thumb.jpg" alt="Vegan Clothing Website — HTML CSS JavaScript" loading="lazy" />
-						<p class="description">My first full website — a product showcase promoting cruelty-free fashion. Built from scratch with HTML, CSS, and JavaScript. The project where I found my footing as a developer.</p>
-					</a>
-					<h3>Vegan Clothing Website <span class="project-year">2020</span></h3>
-					<div class="tech-tags">
-						<span class="tech-tag">HTML</span>
-						<span class="tech-tag">CSS</span>
-						<span class="tech-tag">JavaScript</span>
-					</div>
-					<div class="proj-links">
-						<a href="https://github.com/brucebaldomero/vegan-clothing" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fab fa-github"></i> Code</a>
-						<a href="https://brucebaldomero.github.io/vegan-clothing/" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-live"><i class="fas fa-globe"></i> Live site</a>
-					</div>
-				</article>
-
-				<article class="col-6 col-12-xsmall work-item reveal reveal-delay-2">
-					<a href="images/fulls/UI_UX.gif" class="image fit thumb"><img src="images/thumbs/UI_UX.jpg" alt="Human Digital Interaction Design — UI UX group project" loading="lazy" />
+					<div class="proj-links"><a href="https://github.com/brucebaldomero/creative-single-page-app" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fab fa-github"></i> Code</a><a href="https://brucebaldomero.github.io/creative-single-page-app/" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-live"><i class="fas fa-globe"></i> Live site</a></div>
+				</li>
+				<li class="work-item work-row">
+					<a href="images/fulls/UI_UX.gif" class="image mini"><img src="images/thumbs/UI_UX.jpg" alt="Human Digital Interaction Design — UI UX group project" loading="lazy" width="370" height="217" />
 						<p class="description">A UI/UX group project designing a job search platform. Covered user research, storyboarding, persona development, and interaction principles — with the full process documented in a design thesis.</p>
 					</a>
-					<h3>Human Digital Interaction Design <span class="project-year">2022</span></h3>
-					<div class="tech-tags">
-						<span class="tech-tag">UI/UX</span>
-						<span class="tech-tag">Figma</span>
-						<span class="tech-tag">User Research</span>
+					<div class="work-row-text">
+						<h4>Human Digital Interaction Design <span class="project-year">2022</span></h4>
+						<div class="tech-tags"><span class="tech-tag">UI/UX</span><span class="tech-tag">Figma</span><span class="tech-tag">User Research</span></div>
 					</div>
-					<div class="proj-links">
-						<a href="https://drive.google.com/file/d/1q2Lzz9Q-A0nGW5pPOf4vd_KIpmbAn4Uj/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fas fa-file"></i> Thesis</a>
+					<div class="proj-links"><a href="https://drive.google.com/file/d/1q2Lzz9Q-A0nGW5pPOf4vd_KIpmbAn4Uj/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fas fa-file"></i> Thesis</a></div>
+				</li>
+				<li class="work-item work-row">
+					<a href="images/previews/grapevine.webp" class="image mini"><img src="images/thumbs/grapevine_clothing_thumb.jpg" alt="Grapevine Clothing — e-commerce website" loading="lazy" width="370" height="217" />
+						<p class="description">An independent e-commerce storefront that started as a Depop shop and grew into a fully responsive website. Built with HTML, CSS, and JavaScript — includes a working shopping cart and product listings.</p>
+					</a>
+					<div class="work-row-text">
+						<h4>Grapevine Clothing <span class="project-year">2021</span></h4>
+						<div class="tech-tags"><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span><span class="tech-tag">E-commerce</span></div>
 					</div>
-				</article>
-
-				<article id="gallery" class="col-6 col-12-xsmall work-item reveal reveal-delay-1">
-					<a href="images/fulls/php_html.gif" class="image fit thumb"><img src="images/thumbs/php_thumb.jpg" alt="Points of Interest — PHP and HTML site" loading="lazy" />
+					<div class="proj-links"><a href="https://github.com/brucebaldomero/grapevine-clothing" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fab fa-github"></i> Code</a><a href="https://brucebaldomero.github.io/grapevine-clothing/" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-live"><i class="fas fa-globe"></i> Live site</a></div>
+				</li>
+				<li class="work-item work-row">
+					<a href="images/fulls/php_html.gif" class="image mini"><img src="images/thumbs/php_thumb.jpg" alt="Points of Interest — PHP and HTML site" loading="lazy" width="370" height="217" />
 						<p class="description">A PHP and HTML site letting users explore cities, landmarks, countryside spots, and local dining recommendations. Built to practise server-side scripting and dynamic content rendering.</p>
 					</a>
-					<h3>Points of Interest — PHP <span class="project-year">2021</span></h3>
-					<div class="tech-tags">
-						<span class="tech-tag">PHP</span>
-						<span class="tech-tag">HTML</span>
-						<span class="tech-tag">Server-side</span>
+					<div class="work-row-text">
+						<h4>Points of Interest — PHP <span class="project-year">2021</span></h4>
+						<div class="tech-tags"><span class="tech-tag">PHP</span><span class="tech-tag">HTML</span><span class="tech-tag">Server-side</span></div>
 					</div>
-					<div class="proj-links">
-						<a href="https://drive.google.com/file/d/13mHXpLbhMjc3C7t8tadNL6GSpflTwwVU/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fas fa-file"></i> Thesis</a>
+					<div class="proj-links"><a href="https://drive.google.com/file/d/13mHXpLbhMjc3C7t8tadNL6GSpflTwwVU/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fas fa-file"></i> Thesis</a></div>
+				</li>
+				<li class="work-item work-row">
+					<a href="images/previews/vegan.webp" class="image mini"><img src="images/thumbs/vegan_clothing_thumb.jpg" alt="Vegan Clothing Website — HTML CSS JavaScript" loading="lazy" width="370" height="217" />
+						<p class="description">My first full website — a product showcase promoting cruelty-free fashion. Built from scratch with HTML, CSS, and JavaScript. The project where I found my footing as a developer.</p>
+					</a>
+					<div class="work-row-text">
+						<h4>Vegan Clothing Website <span class="project-year">2020</span></h4>
+						<div class="tech-tags"><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span></div>
 					</div>
-				</article>
-
-			</div>
+					<div class="proj-links"><a href="https://github.com/brucebaldomero/vegan-clothing" target="_blank" rel="noopener noreferrer" class="proj-btn"><i class="fab fa-github"></i> Code</a><a href="https://brucebaldomero.github.io/vegan-clothing/" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn-live"><i class="fas fa-globe"></i> Live site</a></div>
+				</li>
+			</ul>
 		</section>
 
 		<!-- Contact -->
@@ -465,6 +538,7 @@
 	</button>
 	<nav id="burger-menu" aria-label="Mobile navigation" aria-hidden="true">
 		<a href="#one"    class="burger-nav-tab active"><i class="fas fa-user"></i><span>About</span></a>
+		<a href="#work"   class="burger-nav-tab"><i class="fas fa-briefcase"></i><span>Selected Work</span></a>
 		<a href="#skills" class="burger-nav-tab"><i class="fas fa-code"></i><span>Skills</span></a>
 		<a href="#two"    class="burger-nav-tab"><i class="fas fa-folder"></i><span>Projects</span></a>
 		<a href="#three"  class="burger-nav-tab"><i class="fas fa-envelope"></i><span>Contact</span></a>
@@ -538,7 +612,7 @@
 		document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 		/* ── Nav tab active state on scroll ── */
-		const sections = ['one','skills','two','three'];
+		const sections = ['one','work','skills','two','three'];
 		const tabs = document.querySelectorAll('.nav-tab');
 		const burgerTabs = document.querySelectorAll('.burger-nav-tab');
 		const sectionEls = sections.map(id => document.getElementById(id));
@@ -577,6 +651,64 @@
 		});
 		document.addEventListener('click', e => {
 			if (!burgerMenu.contains(e.target)) closeBurger();
+		});
+
+		/* ── Lightbox thumbnails: poptrox strips their href, so make them keyboard-operable buttons ── */
+		window.addEventListener('load', () => setTimeout(() => {
+			document.querySelectorAll('#two .work-item a.image').forEach(a => {
+				const img = a.querySelector('img');
+				a.setAttribute('role', 'button');
+				a.setAttribute('tabindex', '0');
+				a.setAttribute('aria-label', `Preview ${img ? img.alt : 'project'}`);
+				a.addEventListener('keydown', e => {
+					if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); a.click(); }
+				});
+			});
+		}));
+
+		/* ── Live QA checks: real checks run against this page ── */
+		const runBtn = document.getElementById('run-checks');
+		const checkSummary = document.getElementById('check-summary');
+		function luminance(rgb) {
+			const [r, g, b] = rgb.match(/[\d.]+/g).slice(0, 3).map(Number).map(c => {
+				c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+			});
+			return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+		}
+		const checks = {
+			h1() { const n = document.querySelectorAll('h1').length; return [n === 1, `${n} found`]; },
+			alt() { const imgs = [...document.images]; const ok = imgs.filter(i => i.hasAttribute('alt')).length; return [ok === imgs.length, `${ok} of ${imgs.length}`]; },
+			links() { const links = [...document.querySelectorAll('a:not([role="button"])')]; const ok = links.filter(a => (a.getAttribute('href') || '').trim() !== '').length; return [ok === links.length, `${ok} of ${links.length}`]; },
+			rel() { const links = [...document.querySelectorAll('a[target="_blank"]')]; const ok = links.filter(a => /noopener/.test(a.rel)).length; return [ok === links.length, `${ok} of ${links.length}`]; },
+			labels() { const fields = [...document.querySelectorAll('#three input, #three textarea')]; const ok = fields.filter(f => f.labels && f.labels.length).length; return [ok === fields.length, `${ok} of ${fields.length}`]; },
+			overflow() { const over = document.documentElement.scrollWidth - document.documentElement.clientWidth; return [over <= 0, over <= 0 ? `${innerWidth}px wide` : `${over}px over`]; },
+			contrast() {
+				const fg = luminance(getComputedStyle(document.querySelector('.about-text p')).color);
+				const bg = luminance(getComputedStyle(document.body).backgroundColor);
+				const ratio = (Math.max(fg, bg) + 0.05) / (Math.min(fg, bg) + 0.05);
+				return [ratio >= 4.5, `${ratio.toFixed(1)}:1`];
+			},
+			load() { const nav = performance.getEntriesByType('navigation')[0]; const ms = Math.round(nav ? nav.domContentLoadedEventEnd : performance.now()); return [ms < 3000, `${(ms / 1000).toFixed(2)}s`]; }
+		};
+		runBtn.addEventListener('click', async () => {
+			const rows = [...document.querySelectorAll('#check-list li')];
+			const fast = matchMedia('(prefers-reduced-motion: reduce)').matches;
+			runBtn.disabled = true;
+			checkSummary.textContent = 'Running…';
+			rows.forEach(r => { r.dataset.state = 'queued'; r.querySelector('.check-detail').textContent = 'Queued'; });
+			const started = performance.now();
+			let passed = 0;
+			for (const row of rows) {
+				row.dataset.state = 'running';
+				await new Promise(r => setTimeout(r, fast ? 0 : 120));
+				const [ok, detail] = checks[row.dataset.check]();
+				row.dataset.state = ok ? 'pass' : 'fail';
+				row.querySelector('.check-detail').textContent = detail;
+				if (ok) passed++;
+			}
+			checkSummary.textContent = `${passed} of ${rows.length} passed in ${((performance.now() - started) / 1000).toFixed(2)}s, at ${innerWidth}px wide.`;
+			runBtn.innerHTML = '<i class="fas fa-redo"></i> Run again';
+			runBtn.disabled = false;
 		});
 
 		/* ── Smooth scroll for tabs ── */
