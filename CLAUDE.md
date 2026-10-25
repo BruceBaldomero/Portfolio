@@ -133,6 +133,13 @@ const { chromium } = require('playwright');
 
 - Social sites cache previews. After changing an image, refresh it with LinkedIn Post Inspector (linkedin.com/post-inspector) or by sharing the URL with `?v=2` appended.
 
+## Browser and app icons
+
+- The icon is a white DM Sans "B" on a crop of the blue sidebar artwork (`images/sidebar-dark.jpg`).
+- Files: `favicon.ico` (16/32/48) at the site root, `icons/icon-16.png` and `icon-32.png` (hand-tuned with a softened, darkened crop so the B stays readable in tabs), `icons/apple-touch-icon.png` (180, square), `icons/icon-192.png`, `icons/icon-512.png`, `icons/icon-512-maskable.png` (B inside the safe zone), listed in `site.webmanifest`.
+- Both pages link them with root-relative paths (`/favicon.ico`, `/icons/...`, `/site.webmanifest`).
+- `images/icon4.png` (the old chrome B) and `favicon_io/` are no longer linked.
+
 ## LinkedIn Banner
 
 `linkedin-banner.html` + `linkedin-banner.png` are in the repo root. To regenerate the PNG after editing the HTML:
@@ -154,7 +161,7 @@ const { chromium } = require('/opt/node22/lib/node_modules/playwright');
 
 ## Key People & Content
 
-- **Owner:** Bruce Baldomero — Technical Operations & QA Specialist, London
+- **Owner:** Bruce Baldomero — Technical Operations & QA Specialist, London. Loves front-end and web design far more than back-end work; that's where his interest lies.
 - **Employer:** Adaro Optics
 - **Clients:** Vision Express, David Clulow, Boots, Specsavers, independent optical practices across the UK
 - **Key tools on site:** Playwright, SQL/T-SQL, Freshdesk, Confluence, Jira, Stripe, Smart Debit
