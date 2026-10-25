@@ -375,7 +375,7 @@
 	/* ── Skills ───────────────────────────────────────────── */
 	.skills-grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		gap: 1px;
 		border: 1px solid var(--divider);
 		border-radius: 10px;
@@ -721,17 +721,13 @@
 		color: var(--heading-color);
 		margin: 0.35rem 0 1.1rem;
 	}
-	.case-steps { display: grid; gap: 0.9rem; margin: 0 0 1.1rem; }
-	.case--wide .case-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
-	.case-steps dt {
-		font-family: 'DM Mono', monospace;
-		font-size: var(--fs-label);
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		color: var(--muted);
-		font-weight: 400;
-	}
-	.case-steps dd { margin: 0.25rem 0 0; font-size: var(--fs-body); line-height: 1.6; color: var(--text-soft); }
+	/* "Also at work": one-liners under the featured case study, no boxes */
+	.also { grid-column: 1 / -1; margin: 0.75rem 0 0.75rem; }
+	.also-title { font-size: 1.25rem; font-weight: 500; letter-spacing: -0.02em; color: var(--heading-color); margin: 0 0 0.6rem; }
+	.also-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.85rem; max-width: 70ch; }
+	.also-list li { margin: 0; padding: 0; font-size: var(--fs-text); line-height: 1.65; color: var(--text-soft); }
+	.also-list li::before { content: none !important; }
+	.also-list strong { color: var(--heading-color); font-weight: 500; }
 	.case .tech-tags { margin: auto 0 0; }
 
 	/* Featured case study card (links to its own page) */
@@ -802,7 +798,7 @@
 	.timeline-item {
 		--tl-pad: 1.1rem;
 		display: grid;
-		grid-template-columns: 8.75rem minmax(0, 1fr);
+		grid-template-columns: 10rem minmax(0, 1fr);
 		column-gap: 1.25rem;
 		padding: 1rem var(--tl-pad) 1.1rem;
 		margin: 0 calc(-1 * var(--tl-pad)) 0.75rem;
@@ -818,7 +814,6 @@
 	.timeline-item > .timeline-dates { text-align: left; padding-top: 0.2rem; line-height: 1.5; }
 	.timeline-header { justify-content: flex-start; align-items: center; gap: 6px 12px; }
 	.timeline-role { transition: color var(--t-hover) ease; }
-	.timeline-tools { margin: 0.8rem 0 0; }
 
 	/* ── Earlier projects: compact rows ───────────────────── */
 	.work-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
@@ -1061,10 +1056,6 @@
 		.contact-layout { grid-template-columns: 1fr; }
 	}
 
-	/* Case studies — one column once the main column narrows */
-	@media screen and (max-width: 1100px) {
-		.case--wide .case-steps { grid-template-columns: 1fr; gap: 0.9rem; }
-	}
 	@media screen and (max-width: 736px) {
 		.case-grid { grid-template-columns: 1fr; }
 		.case { padding: 1.2rem 1.15rem 1.1rem; }
