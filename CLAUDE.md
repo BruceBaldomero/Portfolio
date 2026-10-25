@@ -112,6 +112,34 @@ The burger menu (`#burger-btn` + `#burger-menu`) replaces both the sidebar nav a
 - **Always ask the user for approval before merging a PR to `main`**
 - Squash merge is the standard merge method
 
+## Search and social sharing
+
+- Each page's `<head>` has a title, description (keep under ~155 characters), canonical URL, Open Graph + X/Twitter tags with image size and alt text, and JSON-LD structured data (`Person` + `WebSite`/`ProfilePage` on the home page; `Person` + `Article` + `BreadcrumbList` on case studies). When a page's content changes, update its description and the JSON-LD `dateModified`.
+- `robots.txt` allows everything except the image-source pages; `sitemap.xml` lists the home page and each case study (update `lastmod` when they change, add new case studies here).
+- Share images are 1200×630: `images/share-home.jpg` and `images/share-status-board.jpg`, rendered from `share-cards.html` (one `<section class="card">` per page, `noindex`). To regenerate:
+
+```bash
+node -e "
+const { chromium } = require('playwright');
+(async () => {
+  const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1200, height: 1400 } });
+  await p.goto('file:///home/user/Portfolio/share-cards.html'); await p.waitForLoadState('networkidle'); await p.waitForTimeout(800);
+  await p.locator('#home').screenshot({ path: 'images/share-home.jpg', type: 'jpeg', quality: 88 });
+  await p.locator('#status-board').screenshot({ path: 'images/share-status-board.jpg', type: 'jpeg', quality: 88 });
+  await b.close();
+})();
+"
+```
+
+- Social sites cache previews. After changing an image, refresh it with LinkedIn Post Inspector (linkedin.com/post-inspector) or by sharing the URL with `?v=2` appended.
+
+## Browser and app icons
+
+- The icon is a white DM Sans "B" on a crop of the blue sidebar artwork (`images/sidebar-dark.jpg`).
+- Files: `favicon.ico` (16/32/48) at the site root, `icons/icon-16.png` and `icon-32.png` (hand-tuned with a softened, darkened crop so the B stays readable in tabs), `icons/apple-touch-icon.png` (180, square), `icons/icon-192.png`, `icons/icon-512.png`, `icons/icon-512-maskable.png` (B inside the safe zone), listed in `site.webmanifest`.
+- Both pages link them with root-relative paths (`/favicon.ico`, `/icons/...`, `/site.webmanifest`).
+- `images/icon4.png` (the old chrome B) and `favicon_io/` are no longer linked.
+
 ## LinkedIn Banner
 
 `linkedin-banner.html` + `linkedin-banner.png` are in the repo root. To regenerate the PNG after editing the HTML:
@@ -133,7 +161,7 @@ const { chromium } = require('/opt/node22/lib/node_modules/playwright');
 
 ## Key People & Content
 
-- **Owner:** Bruce Baldomero — Technical Operations & QA Specialist, London
+- **Owner:** Bruce Baldomero — Technical Operations & QA Specialist, London. Loves front-end and web design far more than back-end work; that's where his interest lies.
 - **Employer:** Adaro Optics
 - **Clients:** Vision Express, David Clulow, Boots, Specsavers, independent optical practices across the UK
 - **Key tools on site:** Playwright, SQL/T-SQL, Freshdesk, Confluence, Jira, Stripe, Smart Debit

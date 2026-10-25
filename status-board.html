@@ -3,23 +3,111 @@
 <html lang="en-GB">
 
 <head>
-	<title>Live service status board with Teams alerts — Bruce Baldomero</title>
 	<meta charset="utf-8" />
-	<script>document.documentElement.classList.add('js')</script>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="Case study: a zero-dependency Node.js status board that checks 7 suppliers and 21 websites every 60 seconds, catches certificate faults, and sends calm, targeted alerts to Microsoft Teams." />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="icon" type="image/png" sizes="32x32" href="images/icon4.png">
+	<script>document.documentElement.classList.add('js')</script>
+	<title>Live service status board with Teams alerts — Bruce Baldomero</title>
+	<meta name="description" content="Case study: a zero-dependency Node.js status board checking 7 suppliers and 21 websites every minute, with calm, targeted Microsoft Teams alerts." />
+	<link rel="canonical" href="https://brucebaldomero.com/status-board.html" />
+	<meta name="author" content="Bruce Baldomero" />
+	<meta name="theme-color" content="#0a0b14" />
+	<link rel="icon" href="/favicon.ico" sizes="48x48">
+	<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16.png">
+	<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="manifest" href="/site.webmanifest">
 
-	<!-- Open Graph -->
-	<meta property="og:title" content="Live service status board with Teams alerts — Bruce Baldomero" />
-	<meta property="og:description" content="A zero-dependency Node.js status board: 7 suppliers and 21 websites checked every 60 seconds, with targeted Microsoft Teams alerts." />
-	<meta property="og:url" content="https://brucebaldomero.com/status-board.html" />
+	<!-- Open Graph (LinkedIn, Facebook, WhatsApp, Slack, Teams) -->
 	<meta property="og:type" content="article" />
-	<meta property="og:image" content="https://brucebaldomero.com/images/ScreenshotSite.jpg" />
 	<meta property="og:site_name" content="Bruce Baldomero" />
-	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="og:locale" content="en_GB" />
+	<meta property="og:title" content="Live service status board with Teams alerts — Bruce Baldomero" />
+	<meta property="og:description" content="Case study: a zero-dependency Node.js status board checking 7 suppliers and 21 websites every minute, with calm, targeted Microsoft Teams alerts." />
+	<meta property="og:url" content="https://brucebaldomero.com/status-board.html" />
+	<meta property="og:image" content="https://brucebaldomero.com/images/share-status-board.jpg" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content="Case study: live service status board with Teams alerts. 7 suppliers, 21 websites, checked every 60 seconds." />
 
+	<!-- X / Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Live service status board with Teams alerts — Bruce Baldomero" />
+	<meta name="twitter:description" content="Case study: a zero-dependency Node.js status board checking 7 suppliers and 21 websites every minute, with calm, targeted Microsoft Teams alerts." />
+	<meta name="twitter:image" content="https://brucebaldomero.com/images/share-status-board.jpg" />
+	<meta name="twitter:image:alt" content="Case study: live service status board with Teams alerts. 7 suppliers, 21 websites, checked every 60 seconds." />
+
+	<!-- Structured data: who this site is about -->
+	<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Person",
+   "@id": "https://brucebaldomero.com/#bruce",
+   "name": "Bruce Baldomero",
+   "jobTitle": "Technical Operations & QA Specialist",
+   "url": "https://brucebaldomero.com/",
+   "image": "https://brucebaldomero.com/images/2avatar_bruce.JPEG",
+   "email": "mailto:brucebaldomero@gmail.com",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "London",
+    "addressCountry": "GB"
+   },
+   "knowsAbout": [
+    "Quality assurance",
+    "Playwright",
+    "Test automation",
+    "SQL",
+    "T-SQL",
+    "Service monitoring",
+    "Microsoft Teams",
+    "Technical operations",
+    "Incident management"
+   ],
+   "sameAs": [
+    "https://www.linkedin.com/in/brucebaldomero/",
+    "https://github.com/brucebaldomero"
+   ]
+  },
+  {
+   "@type": "Article",
+   "headline": "Live service status board with Teams alerts",
+   "description": "Case study: a zero-dependency Node.js status board checking 7 suppliers and 21 websites every minute, with calm, targeted Microsoft Teams alerts.",
+   "url": "https://brucebaldomero.com/status-board.html",
+   "mainEntityOfPage": "https://brucebaldomero.com/status-board.html",
+   "image": "https://brucebaldomero.com/images/share-status-board.jpg",
+   "inLanguage": "en-GB",
+   "author": {
+    "@id": "https://brucebaldomero.com/#bruce"
+   },
+   "datePublished": "2026-10-25",
+   "dateModified": "2026-10-25",
+   "keywords": "Node.js, Microsoft Teams, Power Automate, monitoring, TLS, alerting"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Portfolio",
+     "item": "https://brucebaldomero.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Live service status board",
+     "item": "https://brucebaldomero.com/status-board.html"
+    }
+   ]
+  }
+ ]
+}
+	</script>
+	<meta property="article:author" content="https://brucebaldomero.com/" />
+	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
