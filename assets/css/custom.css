@@ -349,6 +349,9 @@
 		font-variant-numeric: tabular-nums;
 	}
 	.stat-label { font-size: var(--fs-small); line-height: 1.4; color: var(--text-soft); }
+	.stat--wide { grid-column: 1 / -1; }
+	.stat--wide .stat-num { font-size: 2.5rem; }
+	.stat-arrow { color: var(--muted); font-size: 0.7em; vertical-align: 0.12em; margin: 0 0.35em; }
 
 	.cert-block { padding: 1rem 1.1rem; border: 1px solid var(--card-border); border-radius: 10px; background: var(--card-bg); }
 	.cert-block-label { font-family: 'DM Mono', monospace; font-size: var(--fs-label); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; display: block; }
