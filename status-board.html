@@ -1,0 +1,421 @@
+<!DOCTYPE HTML>
+<!-- Base template: Strata by HTML5 UP (html5up.net) | CCA 3.0 License | Heavily customised by Bruce Baldomero -->
+<html lang="en-GB">
+
+<head>
+	<title>Live service status board with Teams alerts — Bruce Baldomero</title>
+	<meta charset="utf-8" />
+	<script>document.documentElement.classList.add('js')</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Case study: a zero-dependency Node.js status board that checks 7 suppliers and 21 websites every 60 seconds, catches certificate faults, and sends calm, targeted alerts to Microsoft Teams." />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="icon" type="image/png" sizes="32x32" href="images/icon4.png">
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Live service status board with Teams alerts — Bruce Baldomero" />
+	<meta property="og:description" content="A zero-dependency Node.js status board: 7 suppliers and 21 websites checked every 60 seconds, with targeted Microsoft Teams alerts." />
+	<meta property="og:url" content="https://brucebaldomero.com/status-board.html" />
+	<meta property="og:type" content="article" />
+	<meta property="og:image" content="https://brucebaldomero.com/images/ScreenshotSite.jpg" />
+	<meta property="og:site_name" content="Bruce Baldomero" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+	<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+	<link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+
+<body class="is-preload case-page dark-mode">
+
+	<header id="header">
+		<div class="inner">
+			<a href="index.html" class="image avatar"><img src="images/2avatar_bruce.JPEG" alt="Bruce Baldomero" /></a>
+			<p class="header-name"><strong>Bruce Baldomero</strong>
+				<br><span class="job-title">Technical Operations & QA Specialist</span>
+			</p>
+			<nav id="nav-tabs" aria-label="Case study sections">
+				<a href="index.html#work" class="nav-tab nav-back">← Portfolio</a>
+				<a href="#overview" class="nav-tab active">Overview</a>
+				<a href="#how" class="nav-tab">How it works</a>
+				<a href="#alerts" class="nav-tab">Alerts</a>
+				<a href="#outcome" class="nav-tab">Outcome</a>
+			</nav>
+		</div>
+	</header>
+
+	<div id="main">
+
+		<!-- Title -->
+		<section id="overview">
+			<header class="reveal">
+				<span class="case-label">Case study · Monitoring</span>
+				<h1 class="case-title">Live service status board with Teams alerts</h1>
+				<p class="case-summary">One page that watches our suppliers and our own websites every minute, catches certificate faults Windows hides, and tells the right people in Microsoft Teams without the noise.</p>
+				<div class="tech-tags">
+					<span class="tech-tag">Node.js</span>
+					<span class="tech-tag">Microsoft Teams</span>
+					<span class="tech-tag">Power Automate</span>
+					<span class="tech-tag">Monitoring</span>
+					<span class="tech-tag">TLS</span>
+				</div>
+				<p class="case-role"><strong>My role:</strong> Technical Operations &amp; QA Specialist. I designed, built and tested this myself, directing Claude Code as my AI pair programmer.</p>
+			</header>
+
+			<!-- At a glance -->
+			<h2 class="sr-only">At a glance</h2>
+			<ul class="glance reveal reveal-delay-1">
+				<li class="stat"><span class="stat-num">7</span><span class="stat-label">Third-party suppliers</span></li>
+				<li class="stat"><span class="stat-num">21</span><span class="stat-label">Of our own websites</span></li>
+				<li class="stat"><span class="stat-num">60s</span><span class="stat-label">Between checks</span></li>
+				<li class="stat"><span class="stat-num">0</span><span class="stat-label">Dependencies</span></li>
+				<li class="stat"><span class="stat-num">40</span><span class="stat-label">Automated tests</span></li>
+			</ul>
+		</section>
+
+		<!-- The problem -->
+		<section id="problem" class="case-section">
+			<header class="reveal">
+				<h2>The problem</h2>
+				<div class="section-divider"></div>
+			</header>
+			<div class="case-prose reveal reveal-delay-1">
+				<p>Every day, someone on the support team opened each supplier’s status page and our internal monitoring by hand, checked them one by one, then ticked a checklist in Microsoft Teams.</p>
+				<p>It was slow and easy to forget. Worse, nobody heard about a problem that started between checks.</p>
+			</div>
+		</section>
+
+		<!-- What I built -->
+		<section id="built" class="case-section">
+			<header class="reveal">
+				<h2>What I built</h2>
+				<div class="section-divider"></div>
+			</header>
+			<div class="case-prose reveal reveal-delay-1">
+				<p>One web page that checks 7 third-party suppliers (payments, email, helpdesk, direct debit and banking providers) and 21 of our own websites every 60 seconds. Each one shows green, amber, red or grey, and the board posts to Microsoft Teams when something changes.</p>
+			</div>
+
+			<!-- Illustrative mock-up of the board -->
+			<figure class="mock reveal reveal-delay-2">
+				<div class="mock-board">
+					<div class="mock-bar">
+						<span class="mock-title">Service status</span>
+						<span class="mock-meta">Checked 60 seconds ago · next check in 0:42</span>
+					</div>
+
+					<p class="mock-group">Suppliers</p>
+					<ul class="mock-grid">
+						<li class="mock-card is-ok"><span class="mock-dot" aria-hidden="true"></span><span class="mock-name">Payments provider</span><span class="mock-state">Operational</span></li>
+						<li class="mock-card is-ok"><span class="mock-dot" aria-hidden="true"></span><span class="mock-name">Helpdesk platform</span><span class="mock-state">Operational</span></li>
+						<li class="mock-card is-ok"><span class="mock-dot" aria-hidden="true"></span><span class="mock-name">Direct debit provider</span><span class="mock-state">Operational</span></li>
+						<li class="mock-card is-unknown"><span class="mock-dot" aria-hidden="true"></span><span class="mock-name">Banking provider</span><span class="mock-state">Can’t check</span></li>
+						<li class="mock-card is-warn mock-card--wide">
+							<span class="mock-dot" aria-hidden="true"></span><span class="mock-name">Email platform</span><span class="mock-state">Degraded</span>
+							<p class="mock-quote">“We’re investigating delays to outbound email. Messages are queued and will be delivered.”</p>
+							<span class="mock-link">View supplier status page</span>
+						</li>
+					</ul>
+
+					<p class="mock-group">Our websites</p>
+					<ul class="mock-grid">
+						<li class="mock-card is-ok"><span class="mock-dot" aria-hidden="true"></span><span class="mock-name">portal-a.example.com</span><span class="mock-state">200 · certificate 84 days</span></li>
+						<li class="mock-card is-ok"><span class="mock-dot" aria-hidden="true"></span><span class="mock-name">shop-c.example.com</span><span class="mock-state">200 · certificate 61 days</span></li>
+						<li class="mock-card is-warn"><span class="mock-dot" aria-hidden="true"></span><span class="mock-name">booking-d.example.com</span><span class="mock-state">Certificate expires in 21 days</span></li>
+						<li class="mock-card is-bad mock-card--wide">
+							<span class="mock-dot" aria-hidden="true"></span><span class="mock-name">portal-b.example.com</span><span class="mock-state">Problem</span>
+							<p class="mock-quote">Incomplete certificate chain: the server isn’t sending its intermediate certificate. Some devices and apps will refuse to connect.</p>
+						</li>
+					</ul>
+				</div>
+				<figcaption><span class="mock-badge">Illustrative – names changed</span> A mock-up of the board in each state: green (operational), amber (degraded, maintenance or expiring soon), red (outage or certificate fault) and grey (can’t check).</figcaption>
+			</figure>
+		</section>
+
+		<!-- How it works -->
+		<section id="how" class="case-section">
+			<header class="reveal">
+				<h2>How it works</h2>
+				<div class="section-divider"></div>
+			</header>
+
+			<figure class="flow reveal reveal-delay-1">
+				<div class="flow-col">
+					<div class="flow-box"><strong>Supplier status feeds</strong><span>7 suppliers, read every minute</span></div>
+					<div class="flow-box"><strong>Our websites</strong><span>21 sites, connected to every minute</span></div>
+				</div>
+				<div class="flow-arrow" aria-hidden="true"></div>
+				<div class="flow-col">
+					<div class="flow-box flow-box--hub"><strong>Status board</strong><span>Plain Node.js, no dependencies</span></div>
+				</div>
+				<div class="flow-arrow" aria-hidden="true"></div>
+				<div class="flow-col">
+					<div class="flow-box"><strong>Management chat</strong><span>Outages, “it’s fixed”, 9am summary</span></div>
+					<div class="flow-box"><strong>Support team chat</strong><span>Every change, summaries at 9, 11, 1, 3 and 5</span></div>
+				</div>
+				<figcaption>How information flows: supplier feeds and our websites go into the status board, which posts to two Microsoft Teams chats.</figcaption>
+			</figure>
+
+			<div class="case-prose">
+				<h3 class="reveal">Suppliers</h3>
+				<p class="reveal">Every minute, the board reads each supplier’s official status feed: the machine-readable data behind their public status page. It understands the Atlassian Statuspage, status.io, StatusHub and Freshstatus formats.</p>
+				<ul class="case-list reveal">
+					<li><strong>Operational</strong> shows green.</li>
+					<li><strong>Degraded or maintenance</strong> shows amber.</li>
+					<li><strong>Outage</strong> shows red.</li>
+				</ul>
+				<p class="reveal">Each card quotes the supplier’s own explanation and links to their page. If a feed can’t be read or changes shape, the card shows grey (“can’t check”). It never shows a false green.</p>
+
+				<h3 class="reveal">Our websites</h3>
+				<p class="reveal">Every minute, the board connects to each site the way a customer’s browser does. It checks that the HTTPS certificate is valid, issued for the right name, not expiring within 30 days, and sent with its complete chain. Then it reads the response code.</p>
+
+				<aside class="callout reveal">
+					<h3>Why the certificate check matters</h3>
+					<p>After a certificate change at work, a site served its certificate without the “intermediate” certificate. Windows quietly fills in the missing piece, so it looked fine on our machines. Other devices and apps refused to connect.</p>
+					<p>The board checks strictly. It uses its own trusted certificate list and never fills gaps, so it sees what the strictest customer device sees. On its first run it flagged another site with the same fault.</p>
+				</aside>
+
+				<h3 class="reveal">Teams alerts for two audiences</h3>
+				<ul class="case-list reveal">
+					<li><strong>Management’s chat</strong> gets outages only, the “it’s fixed” message, and one summary at 9am every day.</li>
+					<li><strong>The support team’s chat</strong> gets every change, plus summaries at 9, 11, 1, 3 and 5.</li>
+				</ul>
+				<p class="reveal">Every message links back to the board and to a certificate report.</p>
+			</div>
+
+			<!-- Illustrative Teams alerts -->
+			<figure class="mock reveal">
+				<div class="teams">
+					<p class="teams-chat">Support team chat</p>
+					<div class="teams-msg is-bad">
+						<span class="teams-from">Status board <span class="teams-time">09:42</span></span>
+						<p class="teams-title"><span class="mock-dot" aria-hidden="true"></span>Problem: portal-b.example.com</p>
+						<p>Incomplete certificate chain. The server isn’t sending its intermediate certificate, so some devices and apps will refuse to connect.</p>
+						<p class="teams-actions"><span>Open status board</span><span>Certificate report</span></p>
+					</div>
+					<div class="teams-msg is-ok">
+						<span class="teams-from">Status board <span class="teams-time">10:31</span></span>
+						<p class="teams-title"><span class="mock-dot" aria-hidden="true"></span>Resolved: Email platform</p>
+						<p>Operational again and stable for 15 minutes.</p>
+						<p class="teams-actions"><span>Open status board</span></p>
+					</div>
+				</div>
+				<figcaption><span class="mock-badge">Illustrative – names changed</span> Two example messages: a certificate problem, and a recovery that was only announced once it had been stable for 15 minutes.</figcaption>
+			</figure>
+
+			<div class="case-prose">
+				<h3 class="reveal">Certificate report</h3>
+				<p class="reveal">A second page lists every site’s certificate issuer, expiry date and days left, with problems first and a CSV download.</p>
+
+				<h3 class="reveal">Built to be light</h3>
+				<ul class="case-list reveal">
+					<li><strong>Zero dependencies.</strong> Plain Node.js using only built-in modules. No npm install, no build step, no database.</li>
+					<li><strong>Tiny footprint.</strong> About 55 MB of memory and almost no CPU.</li>
+					<li><strong>Built, not bought.</strong> I trialled an off-the-shelf tool (Uptime Kuma) first. I built my own because I needed to read each supplier’s own explanation and route alerts to different audiences.</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- Alerts -->
+		<section id="alerts" class="case-section">
+			<header class="reveal">
+				<h2>Making alerts useful, not noisy</h2>
+				<div class="section-divider"></div>
+			</header>
+			<div class="case-prose">
+				<p class="reveal">Alert noise was the hardest problem. Alerts that cry wolf get muted, so every rule below exists to keep messages rare and trustworthy.</p>
+				<ul class="decision-list reveal reveal-delay-1">
+					<li>
+						<h3>Problems now, recoveries when stable</h3>
+						<p>Problems alert immediately. Recoveries wait until things have been stable for 15 minutes. One supplier incident that flapped back and forth would have sent about 25 messages. It now sends 2.</p>
+					</li>
+					<li>
+						<h3>Confirm before alerting</h3>
+						<p>A site must still be down a minute later before anyone is alerted, so a one-off network blip never reaches Teams. Certificate faults alert at once.</p>
+					</li>
+					<li>
+						<h3>Never repeat itself</h3>
+						<p>It remembers what it has already announced, so restarts never repeat messages. If two copies run at once, only one posts, using a lock file with a heartbeat.</p>
+					</li>
+					<li>
+						<h3>No false alarms when it’s offline</h3>
+						<p>If the board loses its own internet connection, everything goes grey rather than red.</p>
+					</li>
+					<li>
+						<h3>UK time, all year</h3>
+						<p>Schedules run on UK time and stay correct through daylight-saving changes.</p>
+					</li>
+				</ul>
+
+				<h3 class="reveal">Tested properly</h3>
+				<p class="reveal">40 automated checks, including a replica of the real certificate fault, 12 back-to-back restarts, two copies running at once, and a simulated clock change.</p>
+
+				<h3 class="reveal">Safe by design</h3>
+				<p class="reveal">Read-only, using public information only. No logins or passwords stored. Webhook secrets are kept out of source control, and test endpoints are disabled in production.</p>
+			</div>
+		</section>
+
+		<!-- Outcome -->
+		<section id="outcome" class="case-section">
+			<header class="reveal">
+				<h2>Outcome</h2>
+				<div class="section-divider"></div>
+			</header>
+			<div class="case-prose">
+				<ul class="case-list reveal reveal-delay-1">
+					<li>Replaced the manual daily checklist with live monitoring and automatic alerts.</li>
+					<li>Adopted by the business and hosted internally.</li>
+				</ul>
+				<blockquote class="case-quote reveal reveal-delay-2">
+					<p>A really good addition to visibility.</p>
+					<cite>The CIO, who asked for it on the office wall and for a show-and-tell</cite>
+				</blockquote>
+			</div>
+		</section>
+
+		<!-- What I learned -->
+		<section id="learned" class="case-section">
+			<header class="reveal">
+				<h2>What I learned</h2>
+				<div class="section-divider"></div>
+			</header>
+			<div class="case-prose reveal reveal-delay-1">
+				<p>Designing alerts for different audiences matters as much as detecting problems. Noisy alerts get ignored, however accurate they are.</p>
+				<p>And “it works on my machine” can hide real faults. The certificate issue looked fine on our machines, and was still broken for other devices and apps.</p>
+				<p class="case-back"><a href="index.html#work" class="cv-btn"><span class="fas fa-arrow-left"></span> Back to portfolio</a></p>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- Mobile burger menu -->
+	<button id="burger-btn" aria-label="Open navigation menu" aria-expanded="false">
+		<span class="burger-bar"></span>
+		<span class="burger-bar"></span>
+		<span class="burger-bar"></span>
+	</button>
+	<nav id="burger-menu" aria-label="Mobile navigation" aria-hidden="true">
+		<a href="index.html#work" class="burger-nav-tab nav-back"><i class="fas fa-arrow-left"></i><span>Portfolio</span></a>
+		<a href="#overview" class="burger-nav-tab active"><i class="fas fa-file-alt"></i><span>Overview</span></a>
+		<a href="#how"      class="burger-nav-tab"><i class="fas fa-cogs"></i><span>How it works</span></a>
+		<a href="#alerts"   class="burger-nav-tab"><i class="fas fa-bell"></i><span>Alerts</span></a>
+		<a href="#outcome"  class="burger-nav-tab"><i class="fas fa-flag-checkered"></i><span>Outcome</span></a>
+		<div class="burger-menu-divider"></div>
+		<button id="burger-theme-toggle" class="burger-nav-tab burger-theme-btn" aria-label="Toggle theme">
+			<i id="burger-theme-icon" class="fas fa-sun"></i>
+			<span id="burger-theme-label">Light Mode</span>
+		</button>
+	</nav>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				<li><a href="mailto:brucebaldomero@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				<li><a href="https://drive.google.com/file/d/14tzCKrzU45PDKyebb9Lunte5wu6eVqVr/view?usp=sharing" class="icon solid fa-file-invoice" target="_blank" rel="noopener noreferrer"><span class="label">CV</span></a></li>
+				<li><a href="https://github.com/brucebaldomero" class="icon brands fa-github" target="_blank" rel="noopener noreferrer"><span class="label">Github</span></a></li>
+				<li><a href="https://www.linkedin.com/in/brucebaldomero/" class="icon brands fa-linkedin" target="_blank" rel="noopener noreferrer"><span class="label">LinkedIn</span></a></li>
+				<li><a href="https://www.instagram.com/bruce_bonus/?hl=en" class="icon brands fa-instagram" target="_blank" rel="noopener noreferrer"><span class="label">Instagram</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; 2021 – 2026</li>
+				<li><a href="https://brucebaldomero.com/">Bruce Baldomero</a></li>
+			</ul>
+		</div>
+	</footer>
+
+	<button id="theme-toggle" aria-label="Toggle dark and light mode">
+		<span class="fas fa-sun"></span>
+		<span class="fas fa-moon"></span>
+	</button>
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.poptrox.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+	<script>
+		/* ── Theme toggle (same behaviour and storage key as index.html) ── */
+		const themeToggle = document.getElementById('theme-toggle');
+		const body = document.body;
+		const sunIcon = themeToggle.querySelector('.fa-sun');
+		const moonIcon = themeToggle.querySelector('.fa-moon');
+		const burgerThemeToggle = document.getElementById('burger-theme-toggle');
+		const burgerThemeIcon = document.getElementById('burger-theme-icon');
+		const burgerThemeLabel = document.getElementById('burger-theme-label');
+		const savedTheme = localStorage.getItem('theme') || 'dark-mode';
+		body.classList.replace('dark-mode', savedTheme);
+		function updateThemeUI(isDark) {
+			sunIcon.style.display  = isDark ? 'inline-block' : 'none';
+			moonIcon.style.display = isDark ? 'none' : 'inline-block';
+			burgerThemeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+			burgerThemeLabel.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+		}
+		function toggleTheme() {
+			const isDark = body.classList.contains('dark-mode');
+			body.classList.replace(isDark ? 'dark-mode' : 'light-mode', isDark ? 'light-mode' : 'dark-mode');
+			localStorage.setItem('theme', isDark ? 'light-mode' : 'dark-mode');
+			updateThemeUI(!isDark);
+		}
+		updateThemeUI(savedTheme === 'dark-mode');
+		themeToggle.addEventListener('click', toggleTheme);
+		burgerThemeToggle.addEventListener('click', () => { toggleTheme(); closeBurger(); });
+
+		/* ── Scroll reveal ── */
+		const revealObserver = new IntersectionObserver((entries) => {
+			entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+		}, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+		document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+		/* ── Nav active state on scroll ── */
+		const sections = ['overview','how','alerts','outcome'];
+		const tabs = document.querySelectorAll('.nav-tab:not(.nav-back)');
+		const burgerTabs = document.querySelectorAll('.burger-nav-tab:not(.nav-back)');
+		const navObserver = new IntersectionObserver((entries) => {
+			entries.forEach(e => {
+				if (!e.isIntersecting) return;
+				tabs.forEach(t => t.classList.toggle('active', t.getAttribute('href') === `#${e.target.id}`));
+				burgerTabs.forEach(t => t.classList.toggle('active', t.getAttribute('href') === `#${e.target.id}`));
+			});
+		}, { rootMargin: '-40% 0px -55% 0px' });
+		sections.forEach(id => navObserver.observe(document.getElementById(id)));
+
+		/* ── Burger menu toggle ── */
+		const burgerBtn = document.getElementById('burger-btn');
+		const burgerMenu = document.getElementById('burger-menu');
+		function closeBurger() {
+			burgerBtn.classList.remove('open');
+			burgerMenu.classList.remove('open');
+			burgerBtn.setAttribute('aria-expanded', 'false');
+			burgerMenu.setAttribute('aria-hidden', 'true');
+		}
+		burgerBtn.addEventListener('click', e => {
+			e.stopPropagation();
+			const isOpen = burgerMenu.classList.contains('open');
+			if (isOpen) { closeBurger(); } else {
+				burgerBtn.classList.add('open');
+				burgerMenu.classList.add('open');
+				burgerBtn.setAttribute('aria-expanded', 'true');
+				burgerMenu.setAttribute('aria-hidden', 'false');
+			}
+		});
+		document.addEventListener('click', e => {
+			if (!burgerMenu.contains(e.target)) closeBurger();
+		});
+
+		/* ── Smooth scroll for in-page tabs (links back to the portfolio navigate normally) ── */
+		document.querySelectorAll('.nav-tab:not(.nav-back), .burger-nav-tab:not(.nav-back):not(.burger-theme-btn)').forEach(tab => {
+			tab.addEventListener('click', e => {
+				e.preventDefault();
+				closeBurger();
+				const target = document.querySelector(tab.getAttribute('href'));
+				if (target) target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+			});
+		});
+	</script>
+
+</body>
+</html>
