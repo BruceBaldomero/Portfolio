@@ -162,6 +162,7 @@ const { chromium } = require('/opt/node22/lib/node_modules/playwright');
 ## Key People & Content
 
 - **Owner:** Bruce Baldomero — Technical Operations & QA Specialist, London. Loves front-end and web design far more than back-end work; that's where his interest lies.
+- **Side projects (describe accurately):** ISKO Studio is Bruce's own web design side business, launched 2026, with no paying clients yet. Mukha Face Yoga is his sister Mona's business; he built the site unpaid and still runs it. Never call either paid or client work.
 - **Employer:** Adaro Optics
 - **Clients:** Vision Express, David Clulow, Boots, Specsavers, independent optical practices across the UK
 - **Key tools on site:** Playwright, SQL/T-SQL, Freshdesk, Confluence, Jira, Stripe, Smart Debit
