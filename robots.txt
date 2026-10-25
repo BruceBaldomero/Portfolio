@@ -1,0 +1,9 @@
+# brucebaldomero.com
+User-agent: *
+Allow: /
+
+# Source pages for generated images, not meant for visitors
+Disallow: /share-cards.html
+Disallow: /linkedin-banner.html
+
+Sitemap: https://brucebaldomero.com/sitemap.xml

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- Source for the social share images (1200×630). Regenerate with the command in CLAUDE.md ("Social share images"). -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex" />
+<title>Share cards</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+	body { background: #111; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+	.card {
+		width: 1200px; height: 630px;
+		display: grid; grid-template-columns: 400px 1fr;
+		background: #242424; color: #fff;
+		overflow: hidden; margin-bottom: 40px;
+	}
+	.side {
+		position: relative;
+		background: #0a0b14 url("images/sidebar-dark.jpg") center / cover no-repeat;
+		box-shadow: inset -1px 0 0 rgba(79,156,249,0.35);
+		display: flex; flex-direction: column; justify-content: flex-end;
+		padding: 48px 44px;
+	}
+	.side::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,8,16,0.85), rgba(6,8,16,0.1) 65%); }
+	.side > * { position: relative; }
+	.avatar { width: 116px; height: 116px; border-radius: 50%; border: 3px solid rgba(125,183,255,0.7); object-fit: cover; margin-bottom: 22px; }
+	.name { font-size: 34px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; }
+	.role { margin-top: 8px; font-size: 21px; line-height: 1.35; color: rgba(255,255,255,0.85); }
+	.main { padding: 64px 64px 56px; display: flex; flex-direction: column; }
+	.label { font-family: 'DM Mono', monospace; font-size: 18px; letter-spacing: 0.1em; text-transform: uppercase; color: #7db7ff; margin-bottom: 18px; }
+	h1 { font-size: 72px; font-weight: 500; line-height: 1.04; letter-spacing: -0.035em; }
+	h1.small { font-size: 58px; line-height: 1.08; }
+	.lead { margin-top: 26px; font-size: 25px; line-height: 1.45; color: rgba(255,255,255,0.82); max-width: 32ch; text-wrap: balance; }
+	.figures { margin-top: 30px; display: flex; gap: 34px; }
+	.figures div { font-size: 19px; color: rgba(255,255,255,0.8); }
+	.figures b { display: block; font-family: 'DM Mono', monospace; font-weight: 500; font-size: 44px; color: #7db7ff; line-height: 1.1; }
+	.foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; font-size: 21px; color: rgba(255,255,255,0.7); }
+	.foot .url { font-family: 'DM Mono', monospace; color: #fff; }
+	.accent { width: 44px; height: 3px; background: #4f9cf9; border-radius: 2px; margin-top: 30px; }
+</style>
+</head>
+<body>
+
+<section class="card" id="home">
+	<div class="side">
+		<img class="avatar" src="images/2avatar_bruce.JPEG" alt="">
+		<p class="name">Bruce Baldomero</p>
+		<p class="role">Technical Operations &amp; QA Specialist · London</p>
+	</div>
+	<div class="main">
+		<p class="label">Portfolio</p>
+		<h1>Running, tested<br>and documented.</h1>
+		<div class="accent"></div>
+		<p class="lead">Playwright regression testing, SQL reporting and live service monitoring for UK optical retail.</p>
+		<p class="foot"><span class="url">brucebaldomero.com</span><span>Case study inside →</span></p>
+	</div>
+</section>
+
+<section class="card" id="status-board">
+	<div class="side">
+		<img class="avatar" src="images/2avatar_bruce.JPEG" alt="">
+		<p class="name">Bruce Baldomero</p>
+		<p class="role">Technical Operations &amp; QA Specialist · London</p>
+	</div>
+	<div class="main">
+		<p class="label">Case study · Monitoring</p>
+		<h1 class="small">Live service status board with Teams alerts</h1>
+		<div class="figures">
+			<div><b>7</b>suppliers</div>
+			<div><b>21</b>websites</div>
+			<div><b>60s</b>checks</div>
+			<div><b>25→2</b>alerts per incident</div>
+		</div>
+		<p class="lead">Replaced a manual daily checklist with live monitoring and calm, targeted alerts.</p>
+		<p class="foot"><span class="url">brucebaldomero.com/status-board</span></p>
+	</div>
+</section>
+
+</body>
+</html>
