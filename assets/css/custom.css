@@ -46,10 +46,12 @@
 		--side-soft: rgba(255,255,255,0.78);
 		--side-muted: rgba(255,255,255,0.6);
 		--side-line: rgba(255,255,255,0.12);
-		--side-hover: rgba(255,255,255,0.06);
+		--side-hover: rgba(255,255,255,0.08);
+		--side-tab-bg: rgba(8,10,20,0.45);        /* nav tabs sit on the artwork */
+		--side-scrim: rgba(6,8,16,0.25);          /* light shade over the artwork */
 		--side-edge: rgba(79,156,249,0.28);
 		--side-active-ink: #7db7ff;
-		--side-active-bg: rgba(79,156,249,0.12);
+		--side-active-bg: rgba(14,26,60,0.82);   /* solid enough to read over the artwork's glow */
 		--side-active-line: rgba(79,156,249,0.45);
 	}
 	body.light-mode {
@@ -76,9 +78,11 @@
 		--side-muted: rgba(0,0,0,0.6);
 		--side-line: rgba(0,0,0,0.12);
 		--side-hover: rgba(0,0,0,0.05);
+		--side-tab-bg: rgba(255,255,255,0.6);
+		--side-scrim: rgba(255,255,255,0.15);
 		--side-edge: rgba(26,95,180,0.25);
 		--side-active-ink: #1a5fb4;
-		--side-active-bg: rgba(26,95,180,0.08);
+		--side-active-bg: rgba(232,240,252,0.9);
 		--side-active-line: rgba(26,95,180,0.4);
 	}
 
@@ -95,15 +99,21 @@
 	body.light-mode ::placeholder { color: rgba(0,0,0,0.55); opacity: 1; }
 
 	/* ── Header ───────────────────────────────────────────── */
-	/* Calm surface instead of the template's photo; blue is the only colour */
+	/* The original curtain artwork, recoloured into the blue palette (images/sidebar-*.jpg) */
 	#header {
-		background: var(--side-bg) !important;
+		background-color: var(--side-bg) !important;
+		background-image: linear-gradient(var(--side-scrim), var(--side-scrim)), url("../../images/sidebar-dark.jpg") !important;
 		box-shadow: inset -1px 0 0 var(--side-edge);
 		color: var(--side-muted);
 		transition: background-color 0.3s ease;
 	}
+	body.light-mode #header {
+		background-image: linear-gradient(var(--side-scrim), var(--side-scrim)), url("../../images/sidebar-light.jpg") !important;
+	}
 	#header strong { color: var(--side-ink); }
 	#header h1, #header .header-name { color: var(--side-soft); }
+	/* Name and title sit over the artwork's glow: brighter text plus a soft shadow keeps them readable */
+	body.dark-mode #header h1, body.dark-mode #header .header-name { color: rgba(255,255,255,0.92); text-shadow: 0 1px 14px rgba(4,8,20,0.9), 0 0 2px rgba(4,8,20,0.6); }
 	#footer .icons a { color: var(--side-muted) !important; }
 	#footer .copyright { color: var(--side-muted); font-size: var(--fs-label); }
 	#footer .copyright li { border-left-color: var(--side-line); }
@@ -132,7 +142,7 @@
 		padding: 8px 12px;
 		border-radius: 5px;
 		border: 1px solid var(--side-line);
-		background: transparent;
+		background: var(--side-tab-bg);
 		color: var(--side-soft) !important;
 		cursor: pointer;
 		white-space: nowrap;

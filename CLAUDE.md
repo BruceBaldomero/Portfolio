@@ -59,7 +59,7 @@ Background is `#242424` (dark mode default, from `main.css`). Light mode overrid
 Single page, five scroll sections (best work first):
 
 ```
-#header          — Avatar, name, job title, desktop #nav-tabs (hidden <980px); calm surface, no background photo
+#header          — Avatar, name, job title, desktop #nav-tabs (hidden <980px); background is the original curtain artwork recoloured blue (images/sidebar-dark.jpg / sidebar-light.jpg, made from images/bcg13.jpg with a gradient map)
 #main
   #work          — Intro (.intro: headline, lead, View CV + Get in touch) → featured status board card (.case--feature) → "Also at work" one-liners (.also) → live QA check card (#run-checks)
   #about         — About (text + stat tiles: 25 → 2 alerts, 3+ years, 10+ clients; certifications)
