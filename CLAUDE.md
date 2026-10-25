@@ -70,6 +70,12 @@ Single page, five scroll sections:
 #theme-toggle    — Floating circular dark/light button, hidden on mobile
 ```
 
+## Case study pages
+
+- `status-board.html` — "Live service status board with Teams alerts". Same sidebar, stylesheets and scripts as `index.html`; its own small inline script (theme, reveal, nav, burger). The sidebar name is a `<p class="header-name">` so the case title can be the page's only `<h1>`.
+- Linked from the lead card (`.case--feature`) in the Selected Work section of `index.html`.
+- **Privacy rules for work case studies:** no employer name/domains or the board's real URL, no client/retailer names, no colleague names (say "the CIO"), no supplier brand names (describe by type), no webhook/IP/internal URLs, no repo links, no screenshots — use the HTML mock-ups labelled "Illustrative – names changed" with `.example.com` names.
+
 ## Inline JavaScript (bottom of `index.html`)
 
 All JS logic lives in a single `<script>` block at the bottom of `index.html`:
