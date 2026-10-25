@@ -301,7 +301,7 @@
 	.section-divider { width: 28px; height: 2px; background: var(--accent); border-radius: 2px; margin: 0.5rem 0 1.6rem; opacity: 0.75; }
 
 	/* One heading size for every section */
-	#one .major h2, #work h2, #skills h2, #two h2, #three h2 {
+	#about .major h2, #skills h2, #two h2, #three h2 {
 		font-size: var(--fs-h2);
 		font-weight: 500;
 		letter-spacing: -0.03em;
@@ -654,13 +654,34 @@
 		}
 	}
 
-	/* ── Sidebar pitch ────────────────────────────────────── */
-	#header .header-pitch {
-		margin: 0.9rem 0 0 auto;
-		max-width: 30ch;
-		font-size: 0.9375rem;
-		line-height: 1.55;
-		color: rgba(255,255,255,0.8);
+	/* ── Intro: the first thing in the main column ─────────── */
+	.intro { margin-bottom: 2.5rem; }
+	#work .intro-title {
+		font-size: clamp(2rem, 1.35rem + 1.5vw, 2.75rem);
+		font-weight: 500;
+		line-height: 1.15;
+		letter-spacing: -0.03em;
+		color: var(--heading-color);
+		max-width: 22ch;
+		margin: 0 0 1.1rem;
+		text-wrap: balance;
+	}
+	.intro-lead { font-size: 1.1875rem; line-height: 1.65; color: var(--text-soft); max-width: 58ch; margin: 0 0 1.5rem; }
+	.intro-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; }
+	.intro-actions .cv-btn { margin: 0; }
+	.text-link {
+		display: inline-flex; align-items: center; min-height: 44px;
+		font-size: 0.9375rem; font-weight: 500;
+		color: var(--heading-color) !important;
+		border-bottom: 0;
+		text-decoration: underline;
+		text-decoration-color: var(--accent-border);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.3em;
+		transition: text-decoration-color var(--t-hover) ease;
+	}
+	@media (hover: hover) and (pointer: fine) {
+		.text-link:hover { text-decoration-color: var(--accent); }
 	}
 
 	/* ── Section intros ───────────────────────────────────── */
@@ -1048,11 +1069,6 @@
 		.case-grid { grid-template-columns: 1fr; }
 		.case { padding: 1.2rem 1.15rem 1.1rem; }
 		.check-list { grid-template-columns: 1fr; }
-	}
-
-	/* Header pitch centres with the header on tablet/phone */
-	@media screen and (max-width: 980px) {
-		#header .header-pitch { margin: 0.75rem auto 0; text-align: center; }
 	}
 
 	/* Timeline + education — stack and left-align on small screens */
