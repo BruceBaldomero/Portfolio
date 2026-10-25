@@ -5,6 +5,7 @@
 <head>
 	<title>Live service status board with Teams alerts — Bruce Baldomero</title>
 	<meta charset="utf-8" />
+	<script>document.documentElement.classList.add('js')</script>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="Case study: a zero-dependency Node.js status board that checks 7 suppliers and 21 websites every 60 seconds, catches certificate faults, and sends calm, targeted alerts to Microsoft Teams." />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -27,7 +28,7 @@
 	<link rel="stylesheet" href="assets/css/custom.css" />
 </head>
 
-<body class="is-preload case-page">
+<body class="is-preload case-page dark-mode">
 
 	<header id="header">
 		<div class="inner">
@@ -346,7 +347,7 @@
 		const burgerThemeIcon = document.getElementById('burger-theme-icon');
 		const burgerThemeLabel = document.getElementById('burger-theme-label');
 		const savedTheme = localStorage.getItem('theme') || 'dark-mode';
-		body.classList.add(savedTheme);
+		body.classList.replace('dark-mode', savedTheme);
 		function updateThemeUI(isDark) {
 			sunIcon.style.display  = isDark ? 'inline-block' : 'none';
 			moonIcon.style.display = isDark ? 'none' : 'inline-block';
