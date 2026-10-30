@@ -407,8 +407,7 @@
 				<li><a href="https://www.instagram.com/bruce_bonus/?hl=en" class="icon brands fa-instagram" target="_blank" rel="noopener noreferrer"><span class="label">Instagram</span></a></li>
 			</ul>
 			<ul class="copyright">
-				<li>&copy; 2021 – 2026</li>
-				<li><a href="https://brucebaldomero.com/">Bruce Baldomero</a></li>
+				<li>&copy; <span class="copyright-year">2026</span> <a href="https://brucebaldomero.com/">Bruce Baldomero</a></li>
 			</ul>
 		</div>
 	</footer>
@@ -426,6 +425,9 @@
 	<script src="assets/js/main.js"></script>
 
 	<script>
+		/* ── Footer year: keeps the copyright on the current year (falls back to the year in the HTML) ── */
+		document.querySelectorAll('.copyright-year').forEach(el => { el.textContent = new Date().getFullYear(); });
+
 		/* ── Theme toggle (same behaviour and storage key as index.html) ── */
 		const themeToggle = document.getElementById('theme-toggle');
 		const body = document.body;
